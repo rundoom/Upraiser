@@ -28,11 +28,12 @@ func energy_consume() -> void:
 			food.erase(it)
 			it.queue_free()
 		energy += it.dissolve_rate * it.dissolve_tick
-	
 
 
 func check_needs() -> void:
-#	if food < MAX_FOOD / 2:
+	if move_to != null: return
+	print(food.reduce(func(acc, it): return it.volume + acc, 0))
+	if food.reduce(func(acc, it): return it.volume + acc, 0) < MAX_FOOD / 2:
 		var parameters = PhysicsShapeQueryParameters2D.new()
 		parameters.shape = $Detector/CollisionShape2D.shape
 		parameters.transform = Transform2D(0, global_position)
@@ -45,9 +46,10 @@ func check_needs() -> void:
 		for food_target in intersects.filter(func(it): return it.collider.is_in_group("edable")):
 			if move_to == null or global_position.distance_to(food_target.collider.global_position) < global_position.distance_to(move_to.global_position):
 				move_to = food_target.collider
-				velocity = global_position.direction_to(move_to.global_position) * SPEED
 				
-		move_to.tree_exiting.connect(lost_food, CONNECT_ONE_SHOT)
+		if move_to != null:
+			move_to.tree_exiting.connect(lost_food, CONNECT_ONE_SHOT)
+			velocity = global_position.direction_to(move_to.global_position) * SPEED
 
 
 func _on_picker_body_entered(body: Node2D) -> void:

@@ -7,4 +7,4 @@
 script = ExtResource("2_ddp77")
 dissolve_tick = 1
 dissolve_rate = 1
-volume = 10
+volume = 20

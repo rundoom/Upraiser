@@ -17,3 +17,27 @@ position = Vector2(241, 233)
 
 [node name="Food" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(221, 292)
+
+[node name="Food2" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(530, 337)
+
+[node name="Food3" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(383, 303)
+
+[node name="Food4" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(463, 329)
+
+[node name="Food5" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(340, 379)
+
+[node name="Food6" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(482, 154)
+
+[node name="Food7" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(291, 128)
+
+[node name="Food8" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(250, 367)
+
+[node name="Food9" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(530, 214)
