@@ -20,8 +20,10 @@ class_name NPC
 var move_to: Node2D
 
 func _physics_process(delta: float) -> void:
-	move_and_slide()
-	energy -= get_real_velocity().length()/100
+	var real_speed_factor := get_real_velocity().length()/100
+	if energy >= real_speed_factor:
+		move_and_slide()
+		energy -= real_speed_factor
 		
 
 func energy_consume() -> void:

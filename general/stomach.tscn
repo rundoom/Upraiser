@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyvpdquiw64mk"]
+
+[ext_resource type="Texture2D" uid="uid://cmmi0magq6eqx" path="res://general/stomach.png" id="1_o5rtn"]
+
+[node name="Stomach" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o5rtn")
