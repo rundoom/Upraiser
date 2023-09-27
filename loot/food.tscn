@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu8hvlvwa1ila"]
+
+[ext_resource type="PackedScene" uid="uid://bxabhkl415s3r" path="res://loot/loot.tscn" id="1_8ttbb"]
+[ext_resource type="Script" path="res://Loot.gd" id="2_ddp77"]
+
+[node name="Food" instance=ExtResource("1_8ttbb")]
+script = ExtResource("2_ddp77")
+dissolve_tick = 1
+dissolve_rate = 1

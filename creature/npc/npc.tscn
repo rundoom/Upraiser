@@ -1,34 +1,37 @@
 [gd_scene load_steps=18 format=3 uid="uid://cqwsdxnbwchf4"]
 
 [ext_resource type="Script" path="res://creature/npc/npc.gd" id="1_im2i3"]
-[ext_resource type="Texture2D" uid="uid://ceqj5dy8vxv5d" path="res://general/tilemap.tres" id="2_oct1d"]
 [ext_resource type="Texture2D" uid="uid://cncuw7neav4lr" path="res://general/tilemap.png" id="2_xr4ky"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ahl13"]
 radius = 8.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5tc4"]
+atlas = ExtResource("2_xr4ky")
+region = Rect2(0, 0, 458, 305)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_dep07"]
-atlas = ExtResource("2_oct1d")
+atlas = SubResource("AtlasTexture_q5tc4")
 region = Rect2(408, 204, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rb1gs"]
-atlas = ExtResource("2_oct1d")
+atlas = SubResource("AtlasTexture_q5tc4")
 region = Rect2(408, 221, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_66wh3"]
-atlas = ExtResource("2_oct1d")
+atlas = SubResource("AtlasTexture_q5tc4")
 region = Rect2(408, 238, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_avjnv"]
-atlas = ExtResource("2_oct1d")
+atlas = SubResource("AtlasTexture_q5tc4")
 region = Rect2(391, 204, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjox5"]
-atlas = ExtResource("2_oct1d")
+atlas = SubResource("AtlasTexture_q5tc4")
 region = Rect2(391, 221, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4woj"]
-atlas = ExtResource("2_oct1d")
+atlas = SubResource("AtlasTexture_q5tc4")
 region = Rect2(391, 238, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yxgev"]
@@ -44,15 +47,15 @@ atlas = ExtResource("2_xr4ky")
 region = Rect2(442, 238, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t1tj6"]
-atlas = ExtResource("2_oct1d")
+atlas = SubResource("AtlasTexture_q5tc4")
 region = Rect2(425, 204, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_khg6j"]
-atlas = ExtResource("2_oct1d")
+atlas = SubResource("AtlasTexture_q5tc4")
 region = Rect2(425, 221, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6v51j"]
-atlas = ExtResource("2_oct1d")
+atlas = SubResource("AtlasTexture_q5tc4")
 region = Rect2(425, 238, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d8fct"]
@@ -126,4 +129,4 @@ texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_d8fct")
 animation = &"down_m"
-frame_progress = 0.874203
+frame_progress = 0.151941
