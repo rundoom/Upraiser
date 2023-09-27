@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://bic2gwruiruji"]
 
-[ext_resource type="Script" path="res://NPCManager.gd" id="1_xqhma"]
+[ext_resource type="Script" path="res://creature/npc/NPCManager.gd" id="1_xc4ur"]
 
 [node name="NPCManager" type="Node"]
-script = ExtResource("1_xqhma")
+script = ExtResource("1_xc4ur")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

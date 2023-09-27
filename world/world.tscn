@@ -1,4 +1,15 @@
-[gd_scene format=3 uid="uid://ddioxuyjm5vbt"]
+[gd_scene load_steps=3 format=3 uid="uid://ddioxuyjm5vbt"]
+
+[ext_resource type="PackedScene" uid="uid://bic2gwruiruji" path="res://creature/npc_manager.tscn" id="1_k7wb5"]
+[ext_resource type="PackedScene" uid="uid://cqwsdxnbwchf4" path="res://creature/npc/npc.tscn" id="2_rj64e"]
 
 [node name="World" type="TileMap"]
 format = 2
+
+[node name="NPCManager" parent="." instance=ExtResource("1_k7wb5")]
+
+[node name="NPC" parent="." instance=ExtResource("2_rj64e")]
+position = Vector2(373, 164)
+
+[node name="NPC2" parent="." instance=ExtResource("2_rj64e")]
+position = Vector2(241, 233)
