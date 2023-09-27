@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqwsdxnbwchf4"]
+
+[ext_resource type="Script" path="res://creature/npc/npc.gd" id="1_im2i3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ahl13"]
+
+[node name="NPC" type="CharacterBody2D" groups=["$energy_consume"]]
+motion_mode = 1
+script = ExtResource("1_im2i3")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ahl13")
