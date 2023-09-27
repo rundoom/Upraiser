@@ -17,6 +17,3 @@ position = Vector2(241, 233)
 
 [node name="Food" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(221, 292)
-
-[node name="Food2" parent="." instance=ExtResource("3_hv7id")]
-position = Vector2(273.356, 107.638)

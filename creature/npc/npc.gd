@@ -45,11 +45,17 @@ func check_needs() -> void:
 		for food_target in intersects.filter(func(it): return it.collider.is_in_group("edable")):
 			if move_to == null or global_position.distance_to(food_target.collider.global_position) < global_position.distance_to(move_to.global_position):
 				move_to = food_target.collider
-				velocity = global_position.direction_to(food_target.collider.global_position) * SPEED
+				velocity = global_position.direction_to(move_to.global_position) * SPEED
+				
+		move_to.tree_exiting.connect(lost_food, CONNECT_ONE_SHOT)
 
 
 func _on_picker_body_entered(body: Node2D) -> void:
 	if body == move_to:
 		food.append(body)
 		body.get_parent().remove_child(body)
-		velocity = Vector2.ZERO
+
+
+func lost_food() -> void:
+	move_to = null
+	velocity = Vector2.ZERO
