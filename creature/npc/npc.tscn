@@ -149,5 +149,13 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Picker"]
 shape = SubResource("CircleShape2D_i6oj1")
 
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -59.0
+offset_top = -58.0
+offset_right = 60.0
+offset_bottom = -31.0
+max_value = 300.0
+step = 1.0
+
 [connection signal="ready" from="." to="." method="check_needs"]
 [connection signal="body_entered" from="Picker" to="." method="_on_picker_body_entered"]

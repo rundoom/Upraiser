@@ -5,7 +5,11 @@ class_name NPC
 @export var SPEED := 100
 
 @export var MAX_ENERGY := 300
-@export var energy := MAX_ENERGY
+@export var energy := MAX_ENERGY:
+	set(val):
+		energy = val
+		$ProgressBar.value = energy
+		
 @export var energy_consume_idle := 1
 
 @export var MAX_FOOD := 30
@@ -18,7 +22,8 @@ var move_to: Node2D
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
-
+	energy -= get_real_velocity().length()/100
+		
 
 func energy_consume() -> void:
 	energy -= energy_consume_idle
