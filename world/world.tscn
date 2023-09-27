@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddioxuyjm5vbt"]
+[gd_scene load_steps=4 format=3 uid="uid://ddioxuyjm5vbt"]
 
 [ext_resource type="PackedScene" uid="uid://bic2gwruiruji" path="res://creature/npc_manager.tscn" id="1_k7wb5"]
 [ext_resource type="PackedScene" uid="uid://cqwsdxnbwchf4" path="res://creature/npc/npc.tscn" id="2_rj64e"]
+[ext_resource type="PackedScene" uid="uid://cu8hvlvwa1ila" path="res://loot/food.tscn" id="3_hv7id"]
 
 [node name="World" type="TileMap"]
 format = 2
@@ -13,3 +14,9 @@ position = Vector2(373, 164)
 
 [node name="NPC2" parent="." instance=ExtResource("2_rj64e")]
 position = Vector2(241, 233)
+
+[node name="Food" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(221, 292)
+
+[node name="Food2" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(273.356, 107.638)
