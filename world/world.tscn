@@ -41,3 +41,102 @@ position = Vector2(250, 367)
 
 [node name="Food9" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(530, 214)
+
+[node name="NPC3" parent="." instance=ExtResource("2_rj64e")]
+position = Vector2(412, 208)
+
+[node name="NPC4" parent="." instance=ExtResource("2_rj64e")]
+position = Vector2(280, 277)
+
+[node name="Food10" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(260, 336)
+
+[node name="Food11" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(569, 381)
+
+[node name="Food12" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(422, 347)
+
+[node name="Food13" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(502, 373)
+
+[node name="Food14" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(379, 423)
+
+[node name="Food15" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(521, 198)
+
+[node name="Food16" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(330, 172)
+
+[node name="Food17" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(289, 411)
+
+[node name="Food18" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(569, 258)
+
+[node name="NPC5" parent="." instance=ExtResource("2_rj64e")]
+position = Vector2(828, 270)
+
+[node name="NPC6" parent="." instance=ExtResource("2_rj64e")]
+position = Vector2(696, 339)
+
+[node name="Food19" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(676, 398)
+
+[node name="Food20" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(985, 443)
+
+[node name="Food21" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(838, 409)
+
+[node name="Food22" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(918, 435)
+
+[node name="Food23" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(795, 485)
+
+[node name="Food24" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(937, 260)
+
+[node name="Food25" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(746, 234)
+
+[node name="Food26" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(705, 473)
+
+[node name="Food27" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(985, 320)
+
+[node name="NPC7" parent="." instance=ExtResource("2_rj64e")]
+position = Vector2(627, 209)
+
+[node name="NPC8" parent="." instance=ExtResource("2_rj64e")]
+position = Vector2(495, 278)
+
+[node name="Food28" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(475, 337)
+
+[node name="Food29" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(784, 382)
+
+[node name="Food30" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(637, 348)
+
+[node name="Food31" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(717, 374)
+
+[node name="Food32" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(594, 424)
+
+[node name="Food33" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(736, 199)
+
+[node name="Food34" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(545, 173)
+
+[node name="Food35" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(504, 412)
+
+[node name="Food36" parent="." instance=ExtResource("3_hv7id")]
+position = Vector2(784, 259)
