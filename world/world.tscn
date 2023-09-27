@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddioxuyjm5vbt"]
+[gd_scene load_steps=5 format=3 uid="uid://ddioxuyjm5vbt"]
 
 [ext_resource type="PackedScene" uid="uid://bic2gwruiruji" path="res://creature/npc_manager.tscn" id="1_k7wb5"]
 [ext_resource type="PackedScene" uid="uid://cqwsdxnbwchf4" path="res://creature/npc/npc.tscn" id="2_rj64e"]
 [ext_resource type="PackedScene" uid="uid://cu8hvlvwa1ila" path="res://loot/food.tscn" id="3_hv7id"]
+[ext_resource type="PackedScene" uid="uid://dyvpdquiw64mk" path="res://general/stomach.tscn" id="4_gbsgl"]
 
 [node name="World" type="TileMap"]
 format = 2
@@ -17,39 +18,30 @@ position = Vector2(241, 233)
 
 [node name="Food" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(221, 292)
-dissolve_tick = 2
 
 [node name="Food2" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(530, 337)
-dissolve_tick = 2
 
 [node name="Food3" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(383, 303)
-dissolve_tick = 2
 
 [node name="Food4" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(463, 329)
-dissolve_tick = 2
 
 [node name="Food5" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(340, 379)
-dissolve_tick = 2
 
 [node name="Food6" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(482, 154)
-dissolve_tick = 2
 
 [node name="Food7" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(291, 128)
-dissolve_tick = 2
 
 [node name="Food8" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(250, 367)
-dissolve_tick = 2
 
 [node name="Food9" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(530, 214)
-dissolve_tick = 2
 
 [node name="NPC3" parent="." instance=ExtResource("2_rj64e")]
 position = Vector2(412, 208)
@@ -59,39 +51,30 @@ position = Vector2(280, 277)
 
 [node name="Food10" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(260, 336)
-dissolve_tick = 2
 
 [node name="Food11" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(569, 381)
-dissolve_tick = 2
 
 [node name="Food12" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(422, 347)
-dissolve_tick = 2
 
 [node name="Food13" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(502, 373)
-dissolve_tick = 2
 
 [node name="Food14" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(379, 423)
-dissolve_tick = 2
 
 [node name="Food15" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(521, 198)
-dissolve_tick = 2
 
 [node name="Food16" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(330, 172)
-dissolve_tick = 2
 
 [node name="Food17" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(289, 411)
-dissolve_tick = 2
 
 [node name="Food18" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(569, 258)
-dissolve_tick = 2
 
 [node name="NPC5" parent="." instance=ExtResource("2_rj64e")]
 position = Vector2(828, 270)
@@ -101,39 +84,30 @@ position = Vector2(696, 339)
 
 [node name="Food19" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(676, 398)
-dissolve_tick = 2
 
 [node name="Food20" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(985, 443)
-dissolve_tick = 2
 
 [node name="Food21" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(838, 409)
-dissolve_tick = 2
 
 [node name="Food22" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(918, 435)
-dissolve_tick = 2
 
 [node name="Food23" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(795, 485)
-dissolve_tick = 2
 
 [node name="Food24" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(937, 260)
-dissolve_tick = 2
 
 [node name="Food25" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(746, 234)
-dissolve_tick = 2
 
 [node name="Food26" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(705, 473)
-dissolve_tick = 2
 
 [node name="Food27" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(985, 320)
-dissolve_tick = 2
 
 [node name="NPC7" parent="." instance=ExtResource("2_rj64e")]
 position = Vector2(627, 209)
@@ -143,36 +117,30 @@ position = Vector2(495, 278)
 
 [node name="Food28" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(475, 337)
-dissolve_tick = 2
 
 [node name="Food29" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(784, 382)
-dissolve_tick = 2
 
 [node name="Food30" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(637, 348)
-dissolve_tick = 2
 
 [node name="Food31" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(717, 374)
-dissolve_tick = 2
 
 [node name="Food32" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(594, 424)
-dissolve_tick = 2
 
 [node name="Food33" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(736, 199)
-dissolve_tick = 2
 
 [node name="Food34" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(545, 173)
-dissolve_tick = 2
 
 [node name="Food35" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(504, 412)
-dissolve_tick = 2
 
 [node name="Food36" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(784, 259)
-dissolve_tick = 2
+
+[node name="Stomach" parent="." instance=ExtResource("4_gbsgl")]
+position = Vector2(132.616, 504.633)

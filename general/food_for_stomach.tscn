@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cinitjid5qfc7"]
+
+[ext_resource type="Texture2D" uid="uid://cncuw7neav4lr" path="res://general/tilemap.png" id="1_xg0tw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ajad"]
+radius = 15.0
+
+[node name="FoodForStomach" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4ajad")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -3)
+scale = Vector2(2.375, 2.1875)
+texture = ExtResource("1_xg0tw")
+region_enabled = true
+region_rect = Rect2(153, 153, 16, 16)

@@ -1,8 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyvpdquiw64mk"]
+[gd_scene load_steps=3 format=3 uid="uid://dyvpdquiw64mk"]
 
 [ext_resource type="Texture2D" uid="uid://cmmi0magq6eqx" path="res://general/stomach.png" id="1_o5rtn"]
+[ext_resource type="PackedScene" uid="uid://cinitjid5qfc7" path="res://general/food_for_stomach.tscn" id="2_3x7fs"]
 
 [node name="Stomach" type="StaticBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_o5rtn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+build_mode = 1
+polygon = PackedVector2Array(-26, -65, 0, -66, 9, -49, 39, -69, 76, -41, 76, -3, 67, 23, 32, 51, -14, 58, -37, 43, -31, 9, 1, 6, 1, -19, -15, -27, -26, -44)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-13, -56)
+
+[node name="FoodForStomach" parent="Marker2D" instance=ExtResource("2_3x7fs")]
+position = Vector2(3, 6)
