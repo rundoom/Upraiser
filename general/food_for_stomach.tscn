@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cinitjid5qfc7"]
+[gd_scene load_steps=11 format=3 uid="uid://cinitjid5qfc7"]
 
 [ext_resource type="Shader" path="res://general/dissolve.gdshader" id="1_rjp4b"]
 [ext_resource type="Texture2D" uid="uid://cncuw7neav4lr" path="res://general/tilemap.png" id="1_xg0tw"]
@@ -17,7 +17,69 @@ shader_parameter/noise = ExtResource("2_ers48")
 shader_parameter/gradient = SubResource("GradientTexture1D_sh4ox")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ajad"]
+resource_local_to_scene = true
 radius = 15.0
+
+[sub_resource type="Animation" id="Animation_2nvxp"]
+resource_name = "dissolving"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer:material:shader_parameter/dissolveState")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [15.0, 0.01]
+}
+
+[sub_resource type="Animation" id="Animation_2eu85"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer:material:shader_parameter/dissolveState")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [15.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y83fw"]
+_data = {
+"RESET": SubResource("Animation_2eu85"),
+"dissolving": SubResource("Animation_2nvxp")
+}
 
 [node name="FoodForStomach" type="RigidBody2D"]
 
@@ -29,7 +91,10 @@ offset_right = 19.0
 offset_bottom = 16.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
 size = Vector2i(38, 32)
+render_target_update_mode = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
 texture_filter = 1
@@ -41,5 +106,10 @@ region_enabled = true
 region_rect = Rect2(153, 153, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_4ajad")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "dissolving"
+libraries = {
+"": SubResource("AnimationLibrary_y83fw")
+}
