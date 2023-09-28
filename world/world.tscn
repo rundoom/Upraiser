@@ -146,4 +146,4 @@ position = Vector2(784, 259)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Stomach" parent="CanvasLayer" instance=ExtResource("4_gbsgl")]
-position = Vector2(148, 509)
+position = Vector2(137, 517)

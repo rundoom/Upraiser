@@ -3,18 +3,14 @@
 [ext_resource type="Shader" path="res://general/dissolve.gdshader" id="1_rjp4b"]
 [ext_resource type="Texture2D" uid="uid://cncuw7neav4lr" path="res://general/tilemap.png" id="1_xg0tw"]
 [ext_resource type="Texture2D" uid="uid://bjj08gefq1voq" path="res://general/RadialGradient.png" id="2_ers48"]
-
-[sub_resource type="Gradient" id="Gradient_uxxkq"]
-colors = PackedColorArray(0.545098, 0.545098, 0, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_sh4ox"]
-gradient = SubResource("Gradient_uxxkq")
+[ext_resource type="Texture2D" uid="uid://ce5qdsrdt1612" path="res://general/bub.png" id="4_7ila8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wj5tq"]
 shader = ExtResource("1_rjp4b")
 shader_parameter/dissolveState = 0.0
+shader_parameter/border = Color(0, 1, 0, 1)
+shader_parameter/border_ticc = 0.054
 shader_parameter/noise = ExtResource("2_ers48")
-shader_parameter/gradient = SubResource("GradientTexture1D_sh4ox")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ajad"]
 resource_local_to_scene = true
@@ -23,6 +19,7 @@ radius = 15.0
 [sub_resource type="Animation" id="Animation_2nvxp"]
 resource_name = "dissolving"
 length = 5.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -42,6 +39,32 @@ tracks/1/path = NodePath("CollisionShape2D:shape:radius")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [15.0, 0.01]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles2D:process_material:emission_sphere_radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -74,12 +97,36 @@ tracks/1/keys = {
 "update": 0,
 "values": [15.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2D:process_material:emission_sphere_radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [15.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y83fw"]
 _data = {
 "RESET": SubResource("Animation_2eu85"),
 "dissolving": SubResource("Animation_2nvxp")
 }
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s26wy"]
+emission_shape = 2
+emission_sphere_radius = 15.0
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, -50, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.03
+scale_max = 0.06
+color = Color(0.435294, 0.984314, 0, 1)
 
 [node name="FoodForStomach" type="RigidBody2D"]
 
@@ -106,6 +153,7 @@ region_enabled = true
 region_rect = Rect2(153, 153, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_4ajad")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -113,3 +161,8 @@ autoplay = "dissolving"
 libraries = {
 "": SubResource("AnimationLibrary_y83fw")
 }
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_s26wy")
+texture = ExtResource("4_7ila8")
