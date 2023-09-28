@@ -9,6 +9,7 @@
 format = 2
 
 [node name="NPCManager" parent="." instance=ExtResource("1_k7wb5")]
+position = Vector2(956, 199)
 
 [node name="NPC" parent="." instance=ExtResource("2_rj64e")]
 position = Vector2(373, 164)
