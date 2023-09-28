@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://vyjttmqiweit"]
+
+[ext_resource type="Texture2D" uid="uid://cwtydsuhy15pt" path="res://world/trees/sprites/Swirling tree1.png" id="1_fmooi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gj45d"]
+radius = 15.0
+height = 52.0
+
+[node name="Tree" type="StaticBody2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_fmooi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 31)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_gj45d")

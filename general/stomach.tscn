@@ -10,7 +10,7 @@ texture = ExtResource("1_o5rtn")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 build_mode = 1
-polygon = PackedVector2Array(-26, -65, 0, -66, 9, -49, 39, -69, 76, -41, 76, -3, 67, 23, 32, 51, -14, 58, -37, 43, -31, 9, 1, 6, 1, -19, -15, -27, -26, -44)
+polygon = PackedVector2Array(-26, -65, 0, -66, 9, -49, 39, -69, 76, -41, 76, -3, 60, 22, 29, 47, -13, 54, -37, 43, -31, 9, 1, 6, 1, -19, -15, -27, -26, -44)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-13, -56)
