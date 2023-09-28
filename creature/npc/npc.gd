@@ -16,6 +16,7 @@ class_name NPC
 @export var food :Array[Food] = []
 
 @onready var space_state = get_world_2d().direct_space_state
+@onready var detector_shape = preload("res://creature/npc/detector_shape.tres")
 
 var move_to: Node2D
 
@@ -38,10 +39,11 @@ func energy_consume() -> void:
 
 func check_needs() -> void:
 	if move_to != null: return
-	print(food.reduce(func(acc, it): return it.volume + acc, 0))
+	
 	if food.reduce(func(acc, it): return it.volume + acc, 0) < MAX_FOOD / 2:
 		var parameters = PhysicsShapeQueryParameters2D.new()
-		parameters.shape = $Detector/CollisionShape2D.shape
+		parameters.shape = detector_shape
+		"res://creature/npc/detector_shape.tres"
 		parameters.transform = Transform2D(0, global_position)
 		parameters.collision_mask = 2
 		

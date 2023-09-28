@@ -99,7 +99,7 @@ position = Vector2(918, 435)
 position = Vector2(795, 485)
 
 [node name="Food24" parent="." instance=ExtResource("3_hv7id")]
-position = Vector2(937, 260)
+position = Vector2(719, 131)
 
 [node name="Food25" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(746, 234)
@@ -108,7 +108,7 @@ position = Vector2(746, 234)
 position = Vector2(705, 473)
 
 [node name="Food27" parent="." instance=ExtResource("3_hv7id")]
-position = Vector2(985, 320)
+position = Vector2(835, 357)
 
 [node name="NPC7" parent="." instance=ExtResource("2_rj64e")]
 position = Vector2(627, 209)
@@ -143,5 +143,7 @@ position = Vector2(504, 412)
 [node name="Food36" parent="." instance=ExtResource("3_hv7id")]
 position = Vector2(784, 259)
 
-[node name="Stomach" parent="." instance=ExtResource("4_gbsgl")]
-position = Vector2(132.616, 504.633)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Stomach" parent="CanvasLayer" instance=ExtResource("4_gbsgl")]
+position = Vector2(148, 509)

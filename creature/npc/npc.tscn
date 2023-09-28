@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cqwsdxnbwchf4"]
+[gd_scene load_steps=19 format=3 uid="uid://cqwsdxnbwchf4"]
 
 [ext_resource type="Script" path="res://creature/npc/npc.gd" id="1_im2i3"]
 [ext_resource type="Texture2D" uid="uid://cncuw7neav4lr" path="res://general/tilemap.png" id="2_xr4ky"]
@@ -117,9 +117,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xxuf8"]
-radius = 292.062
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6oj1"]
 
 [node name="NPC" type="CharacterBody2D" groups=["$check_needs", "$energy_consume"]]
@@ -134,13 +131,6 @@ texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_d8fct")
 animation = &"down_m"
-
-[node name="Detector" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
-shape = SubResource("CircleShape2D_xxuf8")
-disabled = true
-debug_color = Color(0, 0.6, 0.701961, 0.164706)
 
 [node name="Picker" type="Area2D" parent="."]
 collision_layer = 0

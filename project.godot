@@ -14,6 +14,10 @@ config/name="Upraiser"
 run/main_scene="res://world/world.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 
+[editor]
+
+movie_writer/movie_file="C:/Users/d_b_o/OneDrive/Документы/GodotProjects/Upraiser/out/footage.avi"
+
 [layer_names]
 
 2d_physics/layer_2="loot"
