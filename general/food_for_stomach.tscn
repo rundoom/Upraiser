@@ -4,31 +4,42 @@
 [ext_resource type="Texture2D" uid="uid://cncuw7neav4lr" path="res://general/tilemap.png" id="1_xg0tw"]
 [ext_resource type="Texture2D" uid="uid://bjj08gefq1voq" path="res://general/RadialGradient.png" id="2_ers48"]
 
+[sub_resource type="Gradient" id="Gradient_uxxkq"]
+colors = PackedColorArray(0.545098, 0.545098, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sh4ox"]
+gradient = SubResource("Gradient_uxxkq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wj5tq"]
+shader = ExtResource("1_rjp4b")
+shader_parameter/dissolveState = 0.0
+shader_parameter/noise = ExtResource("2_ers48")
+shader_parameter/gradient = SubResource("GradientTexture1D_sh4ox")
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ajad"]
 radius = 15.0
 
-[sub_resource type="Gradient" id="Gradient_5wack"]
-colors = PackedColorArray(0.458824, 0.768627, 0, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_45r5i"]
-gradient = SubResource("Gradient_5wack")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhsh6"]
-shader = ExtResource("1_rjp4b")
-shader_parameter/dissolveState = 0.685
-shader_parameter/noise = ExtResource("2_ers48")
-shader_parameter/gradient = SubResource("GradientTexture1D_45r5i")
-
 [node name="FoodForStomach" type="RigidBody2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_4ajad")
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_wj5tq")
+offset_left = -19.0
+offset_top = -16.0
+offset_right = 19.0
+offset_bottom = 16.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+size = Vector2i(38, 32)
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_yhsh6")
 position = Vector2(0, -3)
 scale = Vector2(2.375, 2.1875)
 texture = ExtResource("1_xg0tw")
+centered = false
 region_enabled = true
 region_rect = Rect2(153, 153, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_4ajad")
