@@ -1,13 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://cinitjid5qfc7"]
+[gd_scene load_steps=8 format=3 uid="uid://cinitjid5qfc7"]
 
 [ext_resource type="Shader" path="res://general/dissolve.gdshader" id="1_rjp4b"]
 [ext_resource type="Texture2D" uid="uid://cncuw7neav4lr" path="res://general/tilemap.png" id="1_xg0tw"]
+[ext_resource type="Texture2D" uid="uid://bjj08gefq1voq" path="res://general/RadialGradient.png" id="2_ers48"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ajad"]
 radius = 15.0
 
+[sub_resource type="Gradient" id="Gradient_5wack"]
+colors = PackedColorArray(0.458824, 0.768627, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_45r5i"]
+gradient = SubResource("Gradient_5wack")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yhsh6"]
 shader = ExtResource("1_rjp4b")
+shader_parameter/dissolveState = 0.685
+shader_parameter/noise = ExtResource("2_ers48")
+shader_parameter/gradient = SubResource("GradientTexture1D_45r5i")
 
 [node name="FoodForStomach" type="RigidBody2D"]
 
