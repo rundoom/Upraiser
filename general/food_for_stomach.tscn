@@ -8,8 +8,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wj5tq"]
 shader = ExtResource("1_rjp4b")
 shader_parameter/dissolveState = 0.0
-shader_parameter/border = Color(0, 1, 0, 1)
-shader_parameter/border_ticc = 0.054
+shader_parameter/border = Color(0.756863, 0.996078, 0.301961, 1)
+shader_parameter/border_ticc = 0.068
 shader_parameter/noise = ExtResource("2_ers48")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ajad"]
@@ -119,14 +119,10 @@ _data = {
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s26wy"]
 emission_shape = 2
 emission_sphere_radius = 15.0
-particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
 gravity = Vector3(0, -50, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
 scale_min = 0.03
 scale_max = 0.06
-color = Color(0.435294, 0.984314, 0, 1)
 
 [node name="FoodForStomach" type="RigidBody2D"]
 
