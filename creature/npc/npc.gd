@@ -4,7 +4,7 @@ class_name NPC
 
 @export var SPEED := 100
 
-@export var MAX_ENERGY := 300
+@export var MAX_ENERGY := 300.0
 @export var energy := MAX_ENERGY:
 	set(val):
 		energy = val
@@ -21,20 +21,25 @@ class_name NPC
 var move_to: Node2D
 
 func _physics_process(delta: float) -> void:
-	var real_speed_factor := get_real_velocity().length()/100
+	var real_speed_factor := get_real_velocity().length()/200
 	if energy >= real_speed_factor:
 		move_and_slide()
 		energy -= real_speed_factor
-		
+
 
 func energy_consume() -> void:
 	energy -= energy_consume_idle
+	$Label.text = str(food.map(func(it): return it.volume))
 	for it in food:
+		var food_value = it.dissolve_rate * it.dissolve_tick
+		if food_value > MAX_ENERGY - energy: continue
+		
 		it.volume -= it.dissolve_tick
 		if it.volume <= 0:
 			food.erase(it)
 			it.queue_free()
-		energy += it.dissolve_rate * it.dissolve_tick
+		energy += food_value
+	$Label.text = str(food.map(func(it): return it.volume))
 
 
 func check_needs() -> void:
@@ -43,7 +48,6 @@ func check_needs() -> void:
 	if food.reduce(func(acc, it): return it.volume + acc, 0) < MAX_FOOD / 2:
 		var parameters = PhysicsShapeQueryParameters2D.new()
 		parameters.shape = detector_shape
-		"res://creature/npc/detector_shape.tres"
 		parameters.transform = Transform2D(0, global_position)
 		parameters.collision_mask = 2
 		
