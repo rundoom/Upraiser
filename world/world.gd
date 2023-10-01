@@ -1,5 +1,5 @@
 extends TileMap
-class_name Grid
+class_name WorldGame
 
 
 @onready var space_state := get_world_2d().direct_space_state
@@ -13,7 +13,7 @@ class TileType:
 	const GRASS = Vector2i(0, 0)
 	const FOREST = Vector2i(2, 0)
 
-	
+
 func create_pathfinding_points() -> void:
 	astar.clear()
 	var used_cell_positions = get_used_cells(0)
@@ -29,7 +29,7 @@ func create_pathfinding_points() -> void:
 		
 	for cell_position in used_cell_positions:
 		connect_cardinals(cell_position)
-		
+
 
 func connect_cardinals(point_position) -> void:
 	var center = cells_map.get(point_position)
@@ -40,7 +40,7 @@ func connect_cardinals(point_position) -> void:
 		var surrounding_coord = cells_map.get(surrounding)
 		if surrounding_coord == null: continue
 		astar.connect_points(center, cells_map[surrounding], true)
-		
+
 
 func create_obstacle(shape: Shape2D, transform: Transform2D) -> void:
 	var collision := PhysicsShapeQueryParameters2D.new()
@@ -50,9 +50,19 @@ func create_obstacle(shape: Shape2D, transform: Transform2D) -> void:
 	var collisions := space_state.collide_shape(collision, 64)
 	for coll in collisions:
 		astar.set_point_disabled(cells_map[local_to_map(coll)])
+
+
+func get_point_path(from: Vector2, to: Vector2) -> Array[Vector2]:
+	var from_id := local_to_map(from)
+	var to_id := local_to_map(to)
 	
-	print(collisions)
+	var result: Array[Vector2] = []
 	
+	for it in astar.get_point_path(cells_map[from_id], cells_map[to_id]):
+		result.append(map_to_local(it))
+	
+	return result
+
 
 func get_used_cell_global_positions() -> Array:
 	var cells = get_used_cells(0)

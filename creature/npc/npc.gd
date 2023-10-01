@@ -18,10 +18,20 @@ class_name NPC
 @onready var space_state = get_world_2d().direct_space_state
 @onready var detector_shape = preload("res://creature/npc/detector_shape.tres")
 
+@onready var world := get_tree().get_first_node_in_group("world") as WorldGame
+
 var move_to: Node2D
+var current_path: Array[Vector2] 
+
 
 func _physics_process(delta: float) -> void:
 	var real_speed_factor := get_real_velocity().length()/200
+	
+	if current_path != null and !current_path.is_empty():
+		velocity = global_position.direction_to(current_path.front()) * SPEED
+		if global_position.distance_to(current_path.front()) < 15:
+			current_path.remove_at(0)
+	
 	if energy >= real_speed_factor:
 		move_and_slide()
 		energy -= real_speed_factor
@@ -43,7 +53,8 @@ func energy_consume() -> void:
 
 
 func check_needs() -> void:
-	if move_to != null: return
+	if current_path != null and !current_path.is_empty():
+		return
 	
 	if food.reduce(func(acc, it): return it.volume + acc, 0) < MAX_FOOD / 2:
 		var parameters = PhysicsShapeQueryParameters2D.new()
@@ -68,9 +79,13 @@ func check_needs() -> void:
 			direct_vision.to = move_to.global_position
 			
 			if is_direct_vision():
-				velocity = global_position.direction_to(move_to.global_position) * SPEED
-			
-			
+				current_path = [move_to.global_position]
+			else:
+				current_path = world.get_point_path(global_position, move_to.global_position)
+				
+			velocity = global_position.direction_to(current_path.front()) * SPEED
+
+
 func is_direct_vision() -> bool:
 	var direct_vision = PhysicsRayQueryParameters2D.new()
 	direct_vision.collision_mask = 4
