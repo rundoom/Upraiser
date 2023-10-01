@@ -61,7 +61,23 @@ func check_needs() -> void:
 				
 		if move_to != null:
 			move_to.tree_exiting.connect(lost_food, CONNECT_ONE_SHOT)
-			velocity = global_position.direction_to(move_to.global_position) * SPEED
+			
+			var direct_vision = PhysicsRayQueryParameters2D.new()
+			direct_vision.collision_mask = 4
+			direct_vision.from = global_position
+			direct_vision.to = move_to.global_position
+			
+			if is_direct_vision():
+				velocity = global_position.direction_to(move_to.global_position) * SPEED
+			
+			
+func is_direct_vision() -> bool:
+	var direct_vision = PhysicsRayQueryParameters2D.new()
+	direct_vision.collision_mask = 4
+	direct_vision.from = global_position
+	direct_vision.to = move_to.global_position
+	
+	return space_state.intersect_ray(direct_vision).is_empty()
 
 
 func _on_picker_body_entered(body: Node2D) -> void:

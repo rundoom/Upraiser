@@ -21,3 +21,5 @@ movie_writer/movie_file="C:/Users/d_b_o/OneDrive/Документы/GodotProject
 [layer_names]
 
 2d_physics/layer_2="loot"
+2d_physics/layer_3="Statics"
+2d_physics/layer_4="Navigation"
