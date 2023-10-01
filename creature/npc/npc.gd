@@ -27,11 +27,11 @@ var current_path: Array[Vector2]
 func _physics_process(delta: float) -> void:
 	var real_speed_factor := get_real_velocity().length()/200
 	
-	if current_path != null and !current_path.is_empty():
+	if is_current_path():
 		velocity = global_position.direction_to(current_path.front()) * SPEED
 		if global_position.distance_to(current_path.front()) < 15:
 			current_path.remove_at(0)
-	
+
 	if energy >= real_speed_factor:
 		move_and_slide()
 		energy -= real_speed_factor
@@ -53,7 +53,7 @@ func energy_consume() -> void:
 
 
 func check_needs() -> void:
-	if current_path != null and !current_path.is_empty():
+	if is_current_path():
 		return
 	
 	if food.reduce(func(acc, it): return it.volume + acc, 0) < MAX_FOOD / 2:
@@ -83,7 +83,7 @@ func check_needs() -> void:
 			else:
 				current_path = world.get_point_path(global_position, move_to.global_position)
 				
-			velocity = global_position.direction_to(current_path.front()) * SPEED
+			if is_current_path(): velocity = global_position.direction_to(current_path.front()) * SPEED
 
 
 func is_direct_vision() -> bool:
@@ -103,4 +103,9 @@ func _on_picker_body_entered(body: Node2D) -> void:
 
 func lost_food() -> void:
 	move_to = null
+	current_path = []
 	velocity = Vector2.ZERO
+
+
+func is_current_path() -> bool:
+	return current_path != null and !current_path.is_empty()

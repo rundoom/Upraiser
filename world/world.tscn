@@ -1623,6 +1623,33 @@ position = Vector2(784, 259)
 position = Vector2(137, 517)
 
 [node name="Tree4" parent="." instance=ExtResource("6_qme0r")]
-position = Vector2(437, 547)
+position = Vector2(430, 500)
+
+[node name="Tree5" parent="." instance=ExtResource("6_qme0r")]
+position = Vector2(749, 397)
+
+[node name="Tree6" parent="." instance=ExtResource("6_qme0r")]
+position = Vector2(271, 162)
+
+[node name="Tree7" parent="." instance=ExtResource("6_qme0r")]
+position = Vector2(644, 415)
+
+[node name="Tree8" parent="." instance=ExtResource("6_qme0r")]
+position = Vector2(781, 310)
+
+[node name="Tree9" parent="." instance=ExtResource("6_qme0r")]
+position = Vector2(439, 381)
+
+[node name="Tree10" parent="." instance=ExtResource("6_qme0r")]
+position = Vector2(317, 308)
+
+[node name="Tree11" parent="." instance=ExtResource("6_qme0r")]
+position = Vector2(680, 217)
+
+[node name="Tree12" parent="." instance=ExtResource("6_qme0r")]
+position = Vector2(572, 293)
+
+[node name="Tree13" parent="." instance=ExtResource("6_qme0r")]
+position = Vector2(384, 242)
 
 [connection signal="ready" from="." to="." method="create_pathfinding_points"]
