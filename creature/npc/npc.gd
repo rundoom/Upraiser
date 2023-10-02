@@ -9,6 +9,7 @@ class_name NPC
 	set(val):
 		energy = val
 		$ProgressBar.value = energy
+		if energy <= 0 and food.is_empty(): queue_free()
 		
 @export var energy_consume_idle := 1
 
@@ -38,7 +39,7 @@ func _physics_process(delta: float) -> void:
 
 
 func energy_consume() -> void:
-	energy -= energy_consume_idle
+	energy -= energy_consume_idle * 5
 	$Label.text = str(food.map(func(it): return it.volume))
 	for it in food:
 		var food_value = it.dissolve_rate * it.dissolve_tick
@@ -71,7 +72,8 @@ func check_needs() -> void:
 				move_to = food_target.collider
 				
 		if move_to != null:
-			move_to.tree_exiting.connect(lost_food, CONNECT_ONE_SHOT)
+			if !move_to.tree_exiting.is_connected(lost_food):
+				move_to.tree_exiting.connect(lost_food, CONNECT_ONE_SHOT)
 			
 			var direct_vision = PhysicsRayQueryParameters2D.new()
 			direct_vision.collision_mask = 4
