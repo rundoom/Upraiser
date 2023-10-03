@@ -1545,6 +1545,7 @@ position = Vector2(384, 242)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(648, 420)
+enabled = false
 zoom = Vector2(4, 4)
 
 [connection signal="ready" from="." to="." method="create_pathfinding_points"]

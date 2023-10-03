@@ -27,4 +27,5 @@ func drop_fruit(fruit_node: Fruit) -> void:
 	fruit_node.reparent(world)
 	var tween = create_tween()
 	tween.set_ease(tween.EASE_IN)
-	tween.tween_property(fruit_node, "position", fruit_node.position + Vector2(0, 90), 0.5)
+	tween.parallel().tween_property(fruit_node, "position", fruit_node.position + Vector2(0, 90), 0.5)
+	tween.parallel().tween_property(fruit_node, "rotation", -43, 0.5)
