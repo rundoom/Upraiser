@@ -23,5 +23,8 @@ func spawn_fruit() -> void:
 	fruit.fall.connect(drop_fruit, CONNECT_ONE_SHOT)
 	
 	
-func drop_fruit() -> void:
-	pass
+func drop_fruit(fruit_node: Fruit) -> void:
+	fruit_node.reparent(world)
+	var tween = create_tween()
+	tween.set_ease(tween.EASE_IN)
+	tween.tween_property(fruit_node, "position", fruit_node.position + Vector2(0, 90), 0.5)
