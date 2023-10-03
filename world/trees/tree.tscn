@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://vyjttmqiweit"]
+[gd_scene load_steps=6 format=3 uid="uid://vyjttmqiweit"]
 
 [ext_resource type="Texture2D" uid="uid://cwtydsuhy15pt" path="res://world/trees/sprites/Swirling tree1.png" id="1_fmooi"]
 [ext_resource type="Script" path="res://world/trees/tree.gd" id="1_vtnow"]
@@ -7,7 +7,19 @@
 radius = 15.0
 height = 52.0
 
-[node name="Tree" type="StaticBody2D"]
+[sub_resource type="Curve2D" id="Curve2D_dtcl7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -27, -39, 0, 0, 0, 0, -3, -44, 0, 0, 0, 0, -26, -24, 0, 0, 0, 0, 5, -24, 0, 0, 0, 0, -27, -39, 0, 0, 0, 0, -7, -11, 0, 0, 0, 0, 3, -20, 0, 0, 0, 0, 1, -43)
+}
+point_count = 8
+
+[sub_resource type="Curve2D" id="Curve2D_3itw1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -29, 28, 0, 0, 0, 0, -23, 51, 0, 0, 0, 0, 27, 53, 0, 0, 0, 0, 43, 32, 0, 0, 0, 0, 52, 38, 0, 0, 0, 0, 29, 64, 0, 0, 0, 0, -31, 61, 0, 0, 0, 0, -37, 30)
+}
+point_count = 8
+
+[node name="Tree" type="StaticBody2D" groups=["$spawn_fruit"]]
 collision_layer = 5
 script = ExtResource("1_vtnow")
 
@@ -18,5 +30,23 @@ texture = ExtResource("1_fmooi")
 position = Vector2(5, 31)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_gj45d")
+
+[node name="FruitPlaces" type="Path2D" parent="."]
+curve = SubResource("Curve2D_dtcl7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="FruitPlaces"]
+position = Vector2(-27, -39)
+rotation = -0.205395
+rotates = false
+loop = false
+
+[node name="FruitDropPlace" type="Path2D" parent="."]
+curve = SubResource("Curve2D_3itw1")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="FruitDropPlace"]
+position = Vector2(-29, 28)
+rotation = 1.31561
+
+[node name="FruitHolder" type="Node2D" parent="."]
 
 [connection signal="ready" from="." to="." method="toggle_obstacle"]
