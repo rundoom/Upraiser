@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://dfqsulpo331ot" path="res://world/trees/sprites/tree.png" id="2_y2fs6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gj45d"]
-radius = 8.0
-height = 28.0
+radius = 6.0
+height = 12.0
 
 [sub_resource type="Curve2D" id="Curve2D_dtcl7"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -27, -39, 0, 0, 0, 0, 1, -40, 0, 0, 0, 0, -26, -24, 0, 0, 0, 0, 9, -27, 0, 0, 0, 0, -27, -39, 0, 0, 0, 0, -7, -11, 0, 0, 0, 0, 3, -20, 0, 0, 0, 0, -7, -29, 0, 0, 0, 0, -16, -34, 0, 0, 0, 0, -19, -17, 0, 0, 0, 0, -14, -44, 0, 0, 0, 0, 6, -46, 0, 0, 0, 0, 8, -33)
+"points": PackedVector2Array(0, 0, 0, 0, -18.9, -16.4706, 0, 0, 0, 0, -10.2, -45.3137, 0, 0, 0, 0, 3.3, -15.7843, 0, 0, 0, 0, -27.3, -37.7451, 0, 0, 0, 0, 8.1, -37.0588, 0, 0, 0, 0, -18.9, -16.4706)
 }
-point_count = 13
+point_count = 6
 
 [node name="Tree" type="StaticBody2D" groups=["$spawn_fruit"]]
 collision_layer = 5
@@ -27,12 +27,13 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_gj45d")
 
 [node name="FruitPlaces" type="Path2D" parent="."]
-position = Vector2(16, 20.0286)
+position = Vector2(-12.5, -70)
+rotation = 3.14159
 scale = Vector2(1.66667, 1.45714)
 curve = SubResource("Curve2D_dtcl7")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="FruitPlaces"]
-position = Vector2(-27, -39)
+position = Vector2(-18.9, -16.4706)
 rotation = -0.205395
 rotates = false
 loop = false

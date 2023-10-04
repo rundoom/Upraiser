@@ -1484,13 +1484,19 @@ script = ExtResource("2_rv82t")
 [node name="NPCManager" parent="." instance=ExtResource("3_2sa8e")]
 position = Vector2(956, 199)
 
-[node name="NPC" parent="." instance=ExtResource("4_7o2pp")]
-position = Vector2(264.307, 216.369)
-
 [node name="Tree" parent="." instance=ExtResource("6_h45wk")]
-position = Vector2(254, 280)
+position = Vector2(363, 297)
+
+[node name="Tree2" parent="." instance=ExtResource("6_h45wk")]
+position = Vector2(389, 299)
+
+[node name="Tree3" parent="." instance=ExtResource("6_h45wk")]
+position = Vector2(377, 298)
 
 [node name="Food2" parent="." instance=ExtResource("5_8krun")]
-position = Vector2(256.828, 367.681)
+position = Vector2(372, 370)
+
+[node name="NPC" parent="." instance=ExtResource("4_7o2pp")]
+position = Vector2(376, 232)
 
 [connection signal="ready" from="." to="." method="create_pathfinding_points" flags=18]

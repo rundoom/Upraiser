@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dc3qglde23yhg"]
+[gd_scene load_steps=12 format=3 uid="uid://dc3qglde23yhg"]
 
 [ext_resource type="Script" path="res://loot/fruit.gd" id="1_b448m"]
 [ext_resource type="Texture2D" uid="uid://b2j4sttv5d6xr" path="res://loot/apple1.png" id="1_esh67"]
@@ -215,11 +215,52 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("..:volume")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_1unfj"]
+resource_name = "rot"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../NextImg:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:volume")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t5hyw"]
 _data = {
 "RESET": SubResource("Animation_vxu6j"),
-"grow": SubResource("Animation_ankvu")
+"grow": SubResource("Animation_ankvu"),
+"rot": SubResource("Animation_1unfj")
 }
 
 [node name="Fruit" instance=ExtResource("1_u7pv3")]

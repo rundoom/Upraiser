@@ -26,6 +26,8 @@ var current_path: Array[Vector2]
 
 
 func _physics_process(delta: float) -> void:
+	check_needs()
+	
 	var real_speed_factor := get_real_velocity().length()/200
 	
 	if is_current_path():
@@ -36,11 +38,14 @@ func _physics_process(delta: float) -> void:
 	if energy >= real_speed_factor:
 		move_and_slide()
 		energy -= real_speed_factor
+	
+	var line_path = current_path.map(func(it): return it - global_position)
+#	line_path.push_front(global_position)
+	$PathTracker.points = line_path
 
 
 func energy_consume() -> void:
 	energy -= energy_consume_idle * 5
-	$Label.text = str(food.map(func(it): return it.volume))
 	for it in food:
 		var food_value = it.dissolve_rate * it.dissolve_tick
 		if food_value > MAX_ENERGY - energy: continue
@@ -101,6 +106,7 @@ func _on_picker_body_entered(body: Node2D) -> void:
 	if body == move_to:
 		food.append(body)
 		body.get_parent().remove_child(body)
+		$Label.text = str(food.map(func(it): return it.volume))
 
 
 func lost_food() -> void:
@@ -111,3 +117,7 @@ func lost_food() -> void:
 
 func is_current_path() -> bool:
 	return current_path != null and !current_path.is_empty()
+	
+
+func enable_physics():
+	process_mode = Node.PROCESS_MODE_INHERIT

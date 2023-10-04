@@ -118,8 +118,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6oj1"]
+radius = 21.0
 
 [node name="NPC" type="CharacterBody2D" groups=["$check_needs", "$energy_consume"]]
+process_mode = 4
 motion_mode = 1
 script = ExtResource("1_im2i3")
 
@@ -154,5 +156,8 @@ offset_right = 57.0
 offset_bottom = -61.0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PathTracker" type="Line2D" parent="."]
+width = 3.0
 
 [connection signal="body_entered" from="Picker" to="." method="_on_picker_body_entered"]
