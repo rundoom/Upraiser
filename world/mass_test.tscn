@@ -34,16 +34,8 @@ safe_margin = 0.08
 position = Vector2(655, 323)
 safe_margin = 0.08
 
-[node name="NPC6" parent="." index="18" instance=ExtResource("2_55si8")]
+[node name="NPC6" parent="." index="11" instance=ExtResource("2_55si8")]
 position = Vector2(316.885, 124.261)
 
-[node name="NPC10" parent="." index="19" instance=ExtResource("2_55si8")]
+[node name="NPC10" parent="." index="12" instance=ExtResource("2_55si8")]
 position = Vector2(350.182, 158.748)
-
-[connection signal="ready" from="Tree" to="Tree" method="toggle_obstacle" flags=18]
-[connection signal="ready" from="@StaticBody2D@757137" to="@StaticBody2D@757137" method="toggle_obstacle" flags=18]
-[connection signal="ready" from="@StaticBody2D@757139" to="@StaticBody2D@757139" method="toggle_obstacle" flags=18]
-[connection signal="ready" from="@StaticBody2D@757141" to="@StaticBody2D@757141" method="toggle_obstacle" flags=18]
-[connection signal="ready" from="@StaticBody2D@757143" to="@StaticBody2D@757143" method="toggle_obstacle" flags=18]
-[connection signal="ready" from="@StaticBody2D@757145" to="@StaticBody2D@757145" method="toggle_obstacle" flags=18]
-[connection signal="ready" from="@StaticBody2D@757147" to="@StaticBody2D@757147" method="toggle_obstacle" flags=18]

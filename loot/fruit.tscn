@@ -243,7 +243,6 @@ _data = {
 script = ExtResource("1_b448m")
 
 [node name="CollisionShape2D" parent="." index="0"]
-visible = false
 disabled = true
 
 [node name="Sprite2D" parent="." index="1"]

@@ -228,6 +228,7 @@ script = ExtResource("1_xc4ur")
 [node name="Heart" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_k53sw")
 autoplay = "default"
+frame_progress = 0.225356
 script = ExtResource("3_gg4kv")
 
 [connection signal="beat" from="Heart" to="." method="_on_heartbeat"]
