@@ -30,6 +30,7 @@ func _physics_process(delta: float) -> void:
 	
 	var real_speed_factor := get_real_velocity().length()/200
 	
+	velocity = Vector2.ZERO
 	if is_current_path():
 		velocity = global_position.direction_to(current_path.front()) * SPEED
 		if global_position.distance_to(current_path.front()) < 15:
@@ -41,7 +42,9 @@ func _physics_process(delta: float) -> void:
 	
 	var line_path = current_path.map(func(it): return it - global_position)
 #	line_path.push_front(global_position)
+	line_path.push_front(Vector2.ZERO)
 	$PathTracker.points = line_path
+	pass
 
 
 func energy_consume() -> void:
@@ -55,7 +58,7 @@ func energy_consume() -> void:
 			food.erase(it)
 			it.queue_free()
 		energy += food_value
-	$Label.text = str(food.map(func(it): return it.volume))
+	$Label.text = name
 
 
 func check_needs() -> void:

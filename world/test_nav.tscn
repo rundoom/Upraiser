@@ -1485,16 +1485,19 @@ script = ExtResource("2_rv82t")
 position = Vector2(956, 199)
 
 [node name="Tree" parent="." instance=ExtResource("6_h45wk")]
-position = Vector2(363, 297)
+position = Vector2(456, 289)
 
 [node name="Tree2" parent="." instance=ExtResource("6_h45wk")]
 position = Vector2(389, 299)
 
 [node name="Tree3" parent="." instance=ExtResource("6_h45wk")]
-position = Vector2(377, 298)
+position = Vector2(422, 299)
 
 [node name="Food2" parent="." instance=ExtResource("5_8krun")]
-position = Vector2(372, 370)
+position = Vector2(353, 420)
+
+[node name="Food3" parent="." instance=ExtResource("5_8krun")]
+position = Vector2(455, 484)
 
 [node name="NPC" parent="." instance=ExtResource("4_7o2pp")]
 position = Vector2(376, 232)

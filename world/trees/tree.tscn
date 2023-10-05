@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dfqsulpo331ot" path="res://world/trees/sprites/tree.png" id="2_y2fs6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gj45d"]
-radius = 6.0
-height = 12.0
+radius = 8.0
+height = 32.0
 
 [sub_resource type="Curve2D" id="Curve2D_dtcl7"]
 _data = {
@@ -22,7 +22,7 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_y2fs6")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 46)
+position = Vector2(-2, 44)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_gj45d")
 
