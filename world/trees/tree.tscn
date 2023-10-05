@@ -3,9 +3,8 @@
 [ext_resource type="Script" path="res://world/trees/tree.gd" id="1_vtnow"]
 [ext_resource type="Texture2D" uid="uid://dfqsulpo331ot" path="res://world/trees/sprites/tree.png" id="2_y2fs6"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gj45d"]
-radius = 8.0
-height = 32.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_pw5dl"]
+radius = 15.0
 
 [sub_resource type="Curve2D" id="Curve2D_dtcl7"]
 _data = {
@@ -18,16 +17,16 @@ collision_layer = 5
 script = ExtResource("1_vtnow")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(2.2, -44.225)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_y2fs6")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 44)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_gj45d")
+shape = SubResource("CircleShape2D_pw5dl")
 
 [node name="FruitPlaces" type="Path2D" parent="."]
-position = Vector2(-12.5, -70)
+position = Vector2(-10.3, -114.225)
 rotation = 3.14159
 scale = Vector2(1.66667, 1.45714)
 curve = SubResource("Curve2D_dtcl7")
@@ -39,5 +38,6 @@ rotates = false
 loop = false
 
 [node name="FruitHolder" type="Node2D" parent="."]
+position = Vector2(2.2, -44.225)
 
 [connection signal="ready" from="." to="." method="toggle_obstacle"]

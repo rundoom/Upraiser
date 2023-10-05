@@ -1,13 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dms1d8w5o1siw"]
+[gd_scene load_steps=3 format=3 uid="uid://dms1d8w5o1siw"]
 
 [ext_resource type="PackedScene" uid="uid://ddioxuyjm5vbt" path="res://world/world.tscn" id="1_enwg0"]
-[ext_resource type="PackedScene" uid="uid://vyjttmqiweit" path="res://world/trees/tree.tscn" id="2_7sa2v"]
 [ext_resource type="PackedScene" uid="uid://cqwsdxnbwchf4" path="res://creature/npc/npc.tscn" id="3_shbvy"]
 
 [node name="FixTwitch" instance=ExtResource("1_enwg0")]
+layer_1/tile_data = PackedInt32Array(524300, 3, 131072, 524303, 3, 131072, 327689, 3, 131072, 720906, 3, 131072, 524308, 3, 131072, 196627, 3, 131072, 917518, 3, 131072)
 
-[node name="Tree" parent="." index="3" instance=ExtResource("2_7sa2v")]
-position = Vector2(506.647, 238.378)
-
-[node name="NPC" parent="." index="4" instance=ExtResource("3_shbvy")]
+[node name="NPC" parent="." index="3" instance=ExtResource("3_shbvy")]
 position = Vector2(505, 155)

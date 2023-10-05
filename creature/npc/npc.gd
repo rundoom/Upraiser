@@ -41,10 +41,8 @@ func _physics_process(delta: float) -> void:
 		energy -= real_speed_factor
 	
 	var line_path = current_path.map(func(it): return it - global_position)
-#	line_path.push_front(global_position)
 	line_path.push_front(Vector2.ZERO)
 	$PathTracker.points = line_path
-	pass
 
 
 func energy_consume() -> void:
