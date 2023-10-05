@@ -88,6 +88,10 @@ func check_needs() -> void:
 			direct_vision.from = global_position
 			direct_vision.to = move_to.global_position
 			
+			if $Picker.overlaps_body(move_to):
+				_on_picker_body_entered(move_to)
+				return
+			
 			if is_direct_vision():
 				current_path = [move_to.global_position]
 			else:
