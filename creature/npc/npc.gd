@@ -21,6 +21,9 @@ class_name NPC
 
 @onready var world := get_tree().get_first_node_in_group("world") as WorldGame
 
+static var MARGIN_HOLD := 5.0
+static var MARGIN_MOVE := 0.1
+
 var move_to: Node2D
 var current_path: Array[Vector2] 
 
@@ -31,10 +34,13 @@ func _physics_process(delta: float) -> void:
 	var real_speed_factor := get_real_velocity().length()/200
 	
 	velocity = Vector2.ZERO
+	safe_margin = MARGIN_HOLD
+	
 	if is_current_path():
 		velocity = global_position.direction_to(current_path.front()) * SPEED
 		if global_position.distance_to(current_path.front()) < 15:
 			current_path.remove_at(0)
+			safe_margin = MARGIN_MOVE
 
 	if energy >= real_speed_factor:
 		move_and_slide()

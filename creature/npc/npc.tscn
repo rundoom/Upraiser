@@ -123,6 +123,7 @@ radius = 21.0
 [node name="NPC" type="CharacterBody2D" groups=["$check_needs", "$energy_consume"]]
 process_mode = 4
 motion_mode = 1
+safe_margin = 5.0
 script = ExtResource("1_im2i3")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
