@@ -12,8 +12,25 @@ texture = ExtResource("1_o5rtn")
 build_mode = 1
 polygon = PackedVector2Array(-26, -65, 0, -66, 9, -49, 41, -63, 76, -41, 76, -3, 60, 22, 29, 47, -13, 54, -37, 43, -31, 9, 1, 6, 1, -19, -15, -27, -26, -44)
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="EnterPoint" type="Marker2D" parent="."]
 position = Vector2(-13, -56)
 
-[node name="FoodForStomach" parent="Marker2D" instance=ExtResource("2_3x7fs")]
+[node name="FoodForStomach" parent="EnterPoint" instance=ExtResource("2_3x7fs")]
 position = Vector2(3, 6)
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoint"]
+position = Vector2(-13, 46)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoint"]
+position = Vector2(27, 40)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoint"]
+position = Vector2(3, 28)
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPoint"]
+position = Vector2(44, 19)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPoint"]
+position = Vector2(23, 8)

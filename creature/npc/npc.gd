@@ -27,6 +27,10 @@ static var MARGIN_MOVE := 0.1
 var move_to: Node2D
 var current_path: Array[Vector2] 
 
+var under_cursor = false
+
+signal picked(npc)
+
 
 func _physics_process(delta: float) -> void:
 	check_needs()
@@ -128,7 +132,20 @@ func lost_food() -> void:
 
 func is_current_path() -> bool:
 	return current_path != null and !current_path.is_empty()
-	
+
 
 func enable_physics():
 	process_mode = Node.PROCESS_MODE_INHERIT
+
+
+func _on_mouse_entered() -> void:
+	under_cursor = true
+
+
+func _on_mouse_exited() -> void:
+	under_cursor = false
+
+
+func _input(event: InputEvent) -> void:
+	if under_cursor and event is InputEventMouseButton:
+		picked.emit()
