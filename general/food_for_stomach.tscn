@@ -8,7 +8,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ajad"]
 resource_local_to_scene = true
-radius = 15.0
+radius = 12.0
 
 [sub_resource type="Animation" id="Animation_2eu85"]
 length = 0.001
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [15.0]
+"values": [12.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -34,7 +34,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [15.0]
+"values": [12.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -62,7 +62,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [15.0, 0.01]
+"values": [12.0, 0.01]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -88,7 +88,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [15.0, 0.01]
+"values": [12.0, 0.01]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -119,7 +119,7 @@ shader_parameter/noise = ExtResource("2_ers48")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s26wy"]
 resource_local_to_scene = true
 emission_shape = 2
-emission_sphere_radius = 15.0
+emission_sphere_radius = 12.0
 direction = Vector3(0, 0, 0)
 gravity = Vector3(0, -50, 0)
 scale_min = 0.03
@@ -130,7 +130,6 @@ color = Color(1, 1, 1, 0.556863)
 script = ExtResource("1_5m1sb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_4ajad")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -141,7 +140,7 @@ libraries = {
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_wj5tq")
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_ov5cw")
 region_rect = Rect2(153, 153, 16, 16)
 

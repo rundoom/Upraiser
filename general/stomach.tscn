@@ -1,22 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyvpdquiw64mk"]
+[gd_scene load_steps=5 format=3 uid="uid://dyvpdquiw64mk"]
 
-[ext_resource type="Texture2D" uid="uid://cmmi0magq6eqx" path="res://general/stomach.png" id="1_o5rtn"]
+[ext_resource type="Script" path="res://general/stomach.gd" id="1_5etsb"]
 [ext_resource type="PackedScene" uid="uid://cinitjid5qfc7" path="res://general/food_for_stomach.tscn" id="2_3x7fs"]
+[ext_resource type="Texture2D" uid="uid://kj53bqycvrko" path="res://general/желудок(внеш).png" id="2_5rgum"]
+[ext_resource type="Texture2D" uid="uid://dkdotu1gx5ngd" path="res://general/желудок(внутр).png" id="3_1f3b0"]
 
 [node name="Stomach" type="StaticBody2D"]
+script = ExtResource("1_5etsb")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_o5rtn")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-build_mode = 1
-polygon = PackedVector2Array(-26, -65, 0, -66, 9, -49, 41, -63, 76, -41, 76, -3, 60, 22, 29, 47, -13, 54, -37, 43, -31, 9, 1, 6, 1, -19, -15, -27, -26, -44)
+[node name="Желудок(внутр)" type="Sprite2D" parent="."]
+texture = ExtResource("3_1f3b0")
 
 [node name="EnterPoint" type="Marker2D" parent="."]
 position = Vector2(-13, -56)
 
 [node name="FoodForStomach" parent="EnterPoint" instance=ExtResource("2_3x7fs")]
-position = Vector2(3, 6)
+position = Vector2(13, -6)
 
 [node name="SpawnPoint" type="Node2D" parent="."]
 
@@ -34,3 +33,10 @@ position = Vector2(44, 19)
 
 [node name="Marker2D4" type="Marker2D" parent="SpawnPoint"]
 position = Vector2(23, 8)
+
+[node name="Желудок(внеш)" type="Sprite2D" parent="."]
+texture = ExtResource("2_5rgum")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+build_mode = 1
+polygon = PackedVector2Array(-24, -73, 13, -93, 12, -68, 22, -52, 47, -46, 67, -28, 72, 3, 61, 39, 47, 51, 28, 57, 3, 58, -20, 55, -32, 44, -33, 29, -31, 10, 11, 22, 26, -12, -3, -32)

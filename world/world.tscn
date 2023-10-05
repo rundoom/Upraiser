@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddioxuyjm5vbt"]
+[gd_scene load_steps=14 format=3 uid="uid://ddioxuyjm5vbt"]
 
 [ext_resource type="Texture2D" uid="uid://cncuw7neav4lr" path="res://general/tilemap.png" id="1_jhtrk"]
 [ext_resource type="PackedScene" uid="uid://bic2gwruiruji" path="res://creature/npc_manager.tscn" id="1_k7wb5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c23nencvcfrwp" path="res://world/26de6996f7682487.png" id="3_1gjqf"]
 [ext_resource type="PackedScene" uid="uid://dyvpdquiw64mk" path="res://general/stomach.tscn" id="4_gbsgl"]
 [ext_resource type="PackedScene" uid="uid://vyjttmqiweit" path="res://world/trees/tree.tscn" id="6_qme0r"]
+[ext_resource type="PackedScene" uid="uid://dld3slhpwbb0n" path="res://general/ui.tscn" id="7_o7yiw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2c7dk"]
 texture = ExtResource("1_l0kkb")
@@ -1591,14 +1592,14 @@ script = ExtResource("2_fykyo")
 [node name="NPCManager" parent="." instance=ExtResource("1_k7wb5")]
 position = Vector2(956, 199)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Stomach" parent="CanvasLayer" instance=ExtResource("4_gbsgl")]
-position = Vector2(145, 510)
+[node name="CanvasLayer" parent="." instance=ExtResource("7_o7yiw")]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(648, 420)
-enabled = false
 zoom = Vector2(4, 4)
+
+[node name="Stomach2" parent="." instance=ExtResource("4_gbsgl")]
+position = Vector2(646, 430)
 
 [connection signal="ready" from="." to="." method="create_pathfinding_points"]

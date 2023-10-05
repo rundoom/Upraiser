@@ -148,4 +148,12 @@ func _on_mouse_exited() -> void:
 
 func _input(event: InputEvent) -> void:
 	if under_cursor and event is InputEventMouseButton:
-		picked.emit()
+		picked.emit(self)
+
+
+func connect_to_ui():
+	var ui = get_tree().get_first_node_in_group("UI")
+	
+	if ui != null:
+		pass
+#		picked.connect(ui.)

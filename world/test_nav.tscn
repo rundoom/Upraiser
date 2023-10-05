@@ -1501,5 +1501,9 @@ position = Vector2(455, 484)
 
 [node name="NPC" parent="." instance=ExtResource("4_7o2pp")]
 position = Vector2(376, 232)
+SPEED = 100
+MAX_ENERGY = 300.0
+energy_consume_idle = 1
+MAX_FOOD = 30
 
 [connection signal="ready" from="." to="." method="create_pathfinding_points" flags=18]
