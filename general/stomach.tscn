@@ -13,7 +13,7 @@ script = ExtResource("1_5etsb")
 texture = ExtResource("3_1f3b0")
 
 [node name="EnterPoint" type="Marker2D" parent="."]
-position = Vector2(-13, -56)
+position = Vector2(-2, -64)
 
 [node name="SpawnPoint" type="Node2D" parent="."]
 
