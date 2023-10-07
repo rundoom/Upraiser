@@ -29,7 +29,19 @@ var current_path: Array[Vector2]
 
 var under_cursor = false
 
-signal picked(npc)
+var is_picked: bool = false:
+	set(val):
+		toggle_ui_signals(val)
+		if val:
+			for it in get_tree().get_nodes_in_group("pickable"):
+				if it == self: continue
+				it.is_picked = false
+				it.modulate = Color.WHITE
+		is_picked = val
+		modulate = Color.BLACK
+			
+			
+signal food_changed(npc, food)
 
 
 func _physics_process(delta: float) -> void:
@@ -66,7 +78,7 @@ func energy_consume() -> void:
 			food.erase(it)
 			it.queue_free()
 		energy += food_value
-	$Label.text = name
+	$Label.text = str(food.map(func(it): return it.volume))
 
 
 func check_needs() -> void:
@@ -120,6 +132,7 @@ func is_direct_vision() -> bool:
 func _on_picker_body_entered(body: Node2D) -> void:
 	if body == move_to:
 		food.append(body)
+		food_changed.emit(self, food)
 		body.get_parent().remove_child(body)
 		$Label.text = str(food.map(func(it): return it.volume))
 
@@ -147,13 +160,17 @@ func _on_mouse_exited() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if under_cursor and event is InputEventMouseButton:
-		picked.emit(self)
+	if under_cursor and event.is_action_pressed("LMB"):
+		print(self)
+		is_picked = true
 
 
-func connect_to_ui():
-	var ui = get_tree().get_first_node_in_group("UI")
+func toggle_ui_signals(enable: bool):
+	var food_presenters = get_tree().get_nodes_in_group("$food_change")
 	
-	if ui != null:
-		pass
-#		picked.connect(ui.)
+	for it in food_presenters:
+		if enable:
+			food_changed.connect(it.food_change)
+			food_changed.emit(self, food)
+		else:
+			if food_changed.is_connected(it.food_change): food_changed.disconnect(it.food_change)

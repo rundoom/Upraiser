@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyvpdquiw64mk"]
+[gd_scene load_steps=4 format=3 uid="uid://dyvpdquiw64mk"]
 
 [ext_resource type="Script" path="res://general/stomach.gd" id="1_5etsb"]
-[ext_resource type="PackedScene" uid="uid://cinitjid5qfc7" path="res://general/food_for_stomach.tscn" id="2_3x7fs"]
 [ext_resource type="Texture2D" uid="uid://kj53bqycvrko" path="res://general/желудок(внеш).png" id="2_5rgum"]
 [ext_resource type="Texture2D" uid="uid://dkdotu1gx5ngd" path="res://general/желудок(внутр).png" id="3_1f3b0"]
 
-[node name="Stomach" type="StaticBody2D"]
+[node name="Stomach" type="StaticBody2D" groups=["$food_change"]]
+collision_layer = 128
+collision_mask = 128
 script = ExtResource("1_5etsb")
 
 [node name="Желудок(внутр)" type="Sprite2D" parent="."]
@@ -14,10 +15,10 @@ texture = ExtResource("3_1f3b0")
 [node name="EnterPoint" type="Marker2D" parent="."]
 position = Vector2(-13, -56)
 
-[node name="FoodForStomach" parent="EnterPoint" instance=ExtResource("2_3x7fs")]
-position = Vector2(13, -6)
-
 [node name="SpawnPoint" type="Node2D" parent="."]
+
+[node name="Foods" type="Node2D" parent="SpawnPoint"]
+position = Vector2(1, 0)
 
 [node name="Marker2D" type="Marker2D" parent="SpawnPoint"]
 position = Vector2(-13, 46)

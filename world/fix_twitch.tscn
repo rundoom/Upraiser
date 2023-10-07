@@ -8,7 +8,3 @@ layer_1/tile_data = PackedInt32Array(524300, 3, 131072, 524303, 3, 131072, 32768
 
 [node name="NPC" parent="." index="3" instance=ExtResource("3_shbvy")]
 position = Vector2(505, 155)
-SPEED = 100
-MAX_ENERGY = 300.0
-energy_consume_idle = 1
-MAX_FOOD = 30

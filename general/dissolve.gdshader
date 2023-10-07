@@ -9,7 +9,10 @@ void fragment() {
 	vec4 textureColor = texture(TEXTURE, UV);
 	float textureBrightness = texture(noise, UV).g;
 	
-	float dissolveDiff = abs(textureBrightness - dissolveState);
+	float dissolveDiff = 1.0;
+	if (dissolveState != 0.0){
+		dissolveDiff = abs(textureBrightness - dissolveState);
+	};
 	
 	COLOR = textureColor;
 	COLOR.rgb += border * step(dissolveDiff, border_ticc);

@@ -48,6 +48,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bubbles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_2nvxp"]
 resource_name = "dissolving"
@@ -62,7 +74,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [12.0, 0.01]
+"values": [12.0, 0.3]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -102,6 +114,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bubbles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y83fw"]
 _data = {
@@ -110,6 +134,7 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wj5tq"]
+resource_local_to_scene = true
 shader = ExtResource("1_rjp4b")
 shader_parameter/dissolveState = 0.0
 shader_parameter/border = Color(0.756863, 0.996078, 0.301961, 1)
@@ -127,13 +152,14 @@ scale_max = 0.06
 color = Color(1, 1, 1, 0.556863)
 
 [node name="FoodForStomach" type="RigidBody2D"]
+collision_layer = 128
+collision_mask = 128
 script = ExtResource("1_5m1sb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4ajad")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "dissolving"
 libraries = {
 "": SubResource("AnimationLibrary_y83fw")
 }
