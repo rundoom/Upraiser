@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://qwv6cnpiias4"]
+
+[ext_resource type="PackedScene" uid="uid://cqwsdxnbwchf4" path="res://creature/npc/npc.tscn" id="1_bx3n4"]
+[ext_resource type="Texture2D" uid="uid://bl4484ckow3cc" path="res://creature/npc/альфред.png" id="2_2w7ge"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qoo6g"]
+atlas = ExtResource("2_2w7ge")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y72e3"]
+atlas = ExtResource("2_2w7ge")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6uv8"]
+atlas = ExtResource("2_2w7ge")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bowya"]
+atlas = ExtResource("2_2w7ge")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dloq4"]
+atlas = ExtResource("2_2w7ge")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1aj7v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qoo6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y72e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6uv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bowya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dloq4")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Alfred" instance=ExtResource("1_bx3n4")]
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+texture_filter = 0
+position = Vector2(11, -16)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_1aj7v")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="Marker2D" type="Marker2D" parent="." index="6"]

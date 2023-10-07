@@ -51,12 +51,15 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = Vector2.ZERO
 	safe_margin = MARGIN_HOLD
+	$AnimatedSprite2D.pause()
 	
 	if is_current_path():
 		velocity = global_position.direction_to(current_path.front()) * SPEED
 		if global_position.distance_to(current_path.front()) < 15:
 			current_path.remove_at(0)
-			safe_margin = MARGIN_MOVE
+		
+		$AnimatedSprite2D.play()
+		safe_margin = MARGIN_MOVE
 
 	if energy >= real_speed_factor:
 		move_and_slide()
