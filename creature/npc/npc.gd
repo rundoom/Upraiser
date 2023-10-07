@@ -170,7 +170,7 @@ func toggle_ui_signals(enable: bool):
 	
 	for it in food_presenters:
 		if enable:
-			food_changed.connect(it.food_change)
+			if !food_changed.is_connected(it.food_change): food_changed.connect(it.food_change)
 			food_changed.emit(self, food)
 		else:
 			if food_changed.is_connected(it.food_change): food_changed.disconnect(it.food_change)

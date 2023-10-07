@@ -21,19 +21,19 @@ position = Vector2(-13, -56)
 position = Vector2(1, 0)
 
 [node name="Marker2D" type="Marker2D" parent="SpawnPoint"]
-position = Vector2(-13, 46)
+position = Vector2(-14, 40)
 
 [node name="Marker2D2" type="Marker2D" parent="SpawnPoint"]
-position = Vector2(27, 40)
+position = Vector2(31, 40)
 
 [node name="Marker2D3" type="Marker2D" parent="SpawnPoint"]
-position = Vector2(3, 28)
+position = Vector2(50, 25)
 
 [node name="Marker2D5" type="Marker2D" parent="SpawnPoint"]
-position = Vector2(44, 19)
+position = Vector2(7, 36)
 
 [node name="Marker2D4" type="Marker2D" parent="SpawnPoint"]
-position = Vector2(23, 8)
+position = Vector2(41, 3)
 
 [node name="Желудок(внеш)" type="Sprite2D" parent="."]
 texture = ExtResource("2_5rgum")

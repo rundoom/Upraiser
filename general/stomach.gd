@@ -13,26 +13,33 @@ func food_change(npc: NPC, foods: Array[Food]) -> void:
 		is_npc_changed = true
 		current_foods = []
 		for child in $SpawnPoint/Foods.get_children():
-			$SpawnPoint/Foods.remove_child(child)
+			child.queue_free()
 	
 	for food in foods:
 		if food in current_foods: continue
 		var stomach_food = FoodForStomachSc.instantiate() as FoodForStomach
-#		stomach_food.food_represented = food
+#		prevent render bug
+		stomach_food.hide()
 		
-		$SpawnPoint/Foods.add_child.call_deferred(stomach_food)
-		if is_npc_changed:
-			stomach_food.set_deferred("global_position", decide_marker())
-		else:
-			stomach_food.set_deferred("global_position", $EnterPoint.global_position)
+		place_food.call_deferred(stomach_food, food, is_npc_changed)
 			
-		stomach_food.set_deferred("food_represented", food)
-		
 	current_foods = foods.duplicate()
 
 
+func place_food(stomach_food: FoodForStomach, food: Food, is_npc_changed:bool) -> void:
+		$SpawnPoint/Foods.add_child(stomach_food)
+		stomach_food.food_represented = food
+		if is_npc_changed:
+			stomach_food.global_position = decide_marker()
+		else:
+			stomach_food.global_position = $EnterPoint.global_position
+
+#		prevent render bug
+		RenderingServer.frame_post_draw.connect(stomach_food.show)
+
+
 func decide_marker() -> Vector2:
-	match current_foods.size():
+	match $SpawnPoint/Foods.get_child_count():
 		0: return $SpawnPoint/Marker2D.global_position
 		1: return $SpawnPoint/Marker2D2.global_position
 		2: return $SpawnPoint/Marker2D3.global_position

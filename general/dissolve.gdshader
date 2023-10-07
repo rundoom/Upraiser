@@ -10,9 +10,9 @@ void fragment() {
 	float textureBrightness = texture(noise, UV).g;
 	
 	float dissolveDiff = 1.0;
-	if (dissolveState != 0.0){
+//	if (dissolveState != 0.0){
 		dissolveDiff = abs(textureBrightness - dissolveState);
-	};
+//	};
 	
 	COLOR = textureColor;
 	COLOR.rgb += border * step(dissolveDiff, border_ticc);

@@ -22,8 +22,14 @@ func hold_out_bubbles() -> void:
 
 
 func volume_changed(vol: int, max_vol: int) -> void:
+	var is_just_started = not animation_player.assigned_animation == "dissolving"
+		
 	animation_player.current_animation = "dissolving"
 	animation_player.pause()
-	var advance_to = animation_player.current_animation_length - (vol * (animation_player.current_animation_length / max_vol))
+	var advance_to_pos = (animation_player.current_animation_length - (vol * (animation_player.current_animation_length / max_vol))) - animation_player.current_animation_position
 
-	animation_player.advance(advance_to - animation_player.current_animation_position)
+	if is_just_started: 
+		animation_player.advance(advance_to_pos)
+	elif advance_to_pos > 0:
+		animation_player.play("dissolving")
+		get_tree().create_timer(advance_to_pos).timeout.connect(animation_player.pause)
