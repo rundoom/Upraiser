@@ -20,6 +20,9 @@ class_name NPC
 @onready var detector_shape = preload("res://creature/npc/detector_shape.tres")
 
 @onready var world := get_tree().get_first_node_in_group("world") as WorldGame
+@onready var animated_sprite_2d: AnimatedSprite2D = $Rotator/AnimatedSprite2D
+@onready var rotator: Marker2D = $Rotator
+
 
 static var MARGIN_HOLD := 5.0
 static var MARGIN_MOVE := 0.1
@@ -36,9 +39,9 @@ var is_picked: bool = false:
 			for it in get_tree().get_nodes_in_group("pickable"):
 				if it == self: continue
 				it.is_picked = false
-				it.modulate = Color.WHITE
+#				it.modulate = Color.WHITE
 		is_picked = val
-		modulate = Color.BLACK
+#		modulate = Color.BLACK
 			
 			
 signal food_changed(npc, food)
@@ -47,18 +50,23 @@ signal food_changed(npc, food)
 func _physics_process(delta: float) -> void:
 	check_needs()
 	
+	if get_real_velocity().x > 0:
+		rotator.scale = Vector2(1, 1)
+	elif get_real_velocity().x < 0:
+		rotator.scale = Vector2(-1, 1)
+	
 	var real_speed_factor := get_real_velocity().length()/200
 	
 	velocity = Vector2.ZERO
 	safe_margin = MARGIN_HOLD
-	$AnimatedSprite2D.pause()
+	animated_sprite_2d.pause()
 	
 	if is_current_path():
 		velocity = global_position.direction_to(current_path.front()) * SPEED
 		if global_position.distance_to(current_path.front()) < 15:
 			current_path.remove_at(0)
 		
-		$AnimatedSprite2D.play()
+		animated_sprite_2d.play()
 		safe_margin = MARGIN_MOVE
 
 	if energy >= real_speed_factor:

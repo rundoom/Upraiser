@@ -1,45 +1,46 @@
-[gd_scene load_steps=9 format=3 uid="uid://qwv6cnpiias4"]
+[gd_scene load_steps=10 format=3 uid="uid://qwv6cnpiias4"]
 
 [ext_resource type="PackedScene" uid="uid://cqwsdxnbwchf4" path="res://creature/npc/npc.tscn" id="1_bx3n4"]
 [ext_resource type="Texture2D" uid="uid://bl4484ckow3cc" path="res://creature/npc/альфред.png" id="2_2w7ge"]
+[ext_resource type="Texture2D" uid="uid://xkmthc0r841w" path="res://creature/npc/14.png" id="2_a8xcf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qoo6g"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2cbu"]
 atlas = ExtResource("2_2w7ge")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y72e3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxi1a"]
 atlas = ExtResource("2_2w7ge")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d6uv8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_blwcf"]
 atlas = ExtResource("2_2w7ge")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bowya"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uceij"]
 atlas = ExtResource("2_2w7ge")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dloq4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_eudbv"]
 atlas = ExtResource("2_2w7ge")
 region = Rect2(0, 128, 128, 128)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1aj7v"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_03oe2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qoo6g")
+"texture": SubResource("AtlasTexture_p2cbu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y72e3")
+"texture": SubResource("AtlasTexture_dxi1a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d6uv8")
+"texture": SubResource("AtlasTexture_blwcf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bowya")
+"texture": SubResource("AtlasTexture_uceij")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dloq4")
+"texture": SubResource("AtlasTexture_eudbv")
 }],
 "loop": true,
 "name": &"walk",
@@ -48,12 +49,27 @@ animations = [{
 
 [node name="Alfred" instance=ExtResource("1_bx3n4")]
 
-[node name="AnimatedSprite2D" parent="." index="1"]
-texture_filter = 0
-position = Vector2(11, -16)
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_1aj7v")
-animation = &"walk"
-autoplay = "walk"
+[node name="14" type="Sprite2D" parent="Rotator" index="0"]
+modulate = Color(1, 1, 1, 0.466667)
+position = Vector2(-2, 19)
+scale = Vector2(0.0820313, 0.0369141)
+texture = ExtResource("2_a8xcf")
 
-[node name="Marker2D" type="Marker2D" parent="." index="6"]
+[node name="AnimatedSprite2D" parent="Rotator" index="1"]
+texture_filter = 0
+position = Vector2(9, -11)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_03oe2")
+animation = &"walk"
+
+[node name="ProgressBar" parent="." index="3"]
+offset_left = -57.0
+offset_top = -69.0
+offset_right = 62.0
+offset_bottom = -42.0
+
+[node name="Label" parent="." index="4"]
+offset_left = -53.0
+offset_top = -106.0
+offset_right = 58.0
+offset_bottom = -67.0
