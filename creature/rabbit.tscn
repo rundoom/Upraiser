@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://8jif2hfscjrg"]
+
+[ext_resource type="PackedScene" uid="uid://cqwsdxnbwchf4" path="res://creature/npc/npc.tscn" id="1_kuli1"]
+
+[node name="Rabbit" instance=ExtResource("1_kuli1")]
