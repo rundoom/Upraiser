@@ -31,4 +31,5 @@ LMB={
 2d_physics/layer_2="loot"
 2d_physics/layer_3="Statics"
 2d_physics/layer_4="Navigation"
+2d_physics/layer_7="interact"
 2d_physics/layer_8="UI"

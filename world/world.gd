@@ -14,6 +14,14 @@ class TileType:
 	const FOREST = Vector2i(2, 0)
 
 
+func grow_plants():
+	var grass_cells = get_used_cells(2)
+	for plant in grass_cells:
+		if plant.x == 0 or randf() > 0.15: continue
+		var current_atlas = get_cell_atlas_coords(2, plant)
+		set_cell(2, plant, 4, Vector2i(clampi(current_atlas.x - 1, 0, 9999) , current_atlas.y))
+
+
 func create_pathfinding_points() -> void:
 	astar.clear()
 	var used_cell_positions = get_used_cells(0)

@@ -1,5 +1,51 @@
-[gd_scene load_steps=2 format=3 uid="uid://8jif2hfscjrg"]
+[gd_scene load_steps=8 format=3 uid="uid://8jif2hfscjrg"]
 
 [ext_resource type="PackedScene" uid="uid://cqwsdxnbwchf4" path="res://creature/npc/npc.tscn" id="1_kuli1"]
+[ext_resource type="Texture2D" uid="uid://bkfh7c6es6kqu" path="res://creature/npc/заяц(почти готов).png" id="2_mywt6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he46l"]
+atlas = ExtResource("2_mywt6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5jcs"]
+atlas = ExtResource("2_mywt6")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4qyn"]
+atlas = ExtResource("2_mywt6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajclf"]
+atlas = ExtResource("2_mywt6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l6sil"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he46l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5jcs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4qyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajclf")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
 
 [node name="Rabbit" instance=ExtResource("1_kuli1")]
+
+[node name="AnimatedSprite2D" parent="Rotator" index="0"]
+sprite_frames = SubResource("SpriteFrames_l6sil")
+animation = &"run"
