@@ -5,6 +5,7 @@ class_name WorldGame
 @onready var space_state := get_world_2d().direct_space_state
 var astar := AStar2D.new()
 var cells_map := {}
+var materialized_scenes := {}
 
 
 class TileType:
@@ -17,9 +18,9 @@ class TileType:
 func grow_plants():
 	var grass_cells = get_used_cells(2)
 	for plant in grass_cells:
-		if plant.x == 0 or randf() > 0.15: continue
 		var current_atlas = get_cell_atlas_coords(2, plant)
-		set_cell(2, plant, 4, Vector2i(clampi(current_atlas.x - 1, 0, 9999) , current_atlas.y))
+		if current_atlas.x == 0 or randf() > 1: continue
+		set_cell(2, plant, 4, Vector2i(current_atlas.x - 1, current_atlas.y))
 
 
 func create_pathfinding_points() -> void:
@@ -96,6 +97,23 @@ func get_unit_in(point: Vector2i) -> Node2D:
 
 func get_item_in(point: Vector2i) -> Node2D:
 	return _node_at_point(point, 2)
+	
+
+func materialize_tile(point: Vector2, tile_layer: int, collision_layers: int) -> Node2D:
+	var i_coords = local_to_map(point)
+
+	var data = get_cell_tile_data(tile_layer, i_coords)
+	var scene_path = data.get_custom_data("scene_represent")
+	var scene = materialized_scenes.get(scene_path, null) as PackedScene
+	if scene == null:
+		scene = load(scene_path)
+		materialized_scenes[scene_path] = scene
+
+	erase_cell(tile_layer, i_coords)
+	var material_node = scene.instantiate() as Node2D
+	add_child(material_node)
+	material_node.global_position = map_to_local(i_coords)
+	return material_node
 
 
 func _node_at_point(point: Vector2i, layer: int) -> Node2D:

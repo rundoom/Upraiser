@@ -11,7 +11,7 @@ extends StaticBody2D
 func toggle_obstacle() -> void:
 	await renderer.frame_post_draw
 	world.create_obstacle.bind($HitBox.shape, $HitBox.global_transform).call_deferred()
-	
+
 
 func spawn_fruit() -> void:
 	if $FruitHolder.get_child_count() >= 5: return

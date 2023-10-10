@@ -23,7 +23,6 @@ class_name NPC
 @onready var animated_sprite_2d: AnimatedSprite2D = $Rotator/AnimatedSprite2D
 @onready var rotator: Marker2D = $Rotator
 
-
 static var MARGIN_HOLD := 5.0
 static var MARGIN_MOVE := 0.1
 
@@ -113,11 +112,6 @@ func check_needs() -> void:
 		if move_to != null:
 			if !move_to.tree_exiting.is_connected(lost_food):
 				move_to.tree_exiting.connect(lost_food, CONNECT_ONE_SHOT)
-			
-			var direct_vision = PhysicsRayQueryParameters2D.new()
-			direct_vision.collision_mask = 4
-			direct_vision.from = global_position
-			direct_vision.to = move_to.global_position
 			
 			if $Picker.overlaps_body(move_to):
 				_on_picker_body_entered(move_to)

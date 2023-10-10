@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkj3ce568n4vj"]
+
+[ext_resource type="PackedScene" uid="uid://d1dlk5hpb6kcu" path="res://loot/grass.tscn" id="1_divli"]
+
+[node name="Grass2" instance=ExtResource("1_divli")]
+
+[node name="Sprite2D" parent="." index="1"]
+region_rect = Rect2(1, 36, 30, 28)

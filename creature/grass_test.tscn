@@ -1,17 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7a2rli5dy3lt"]
+[gd_scene load_steps=3 format=3 uid="uid://b7a2rli5dy3lt"]
 
 [ext_resource type="PackedScene" uid="uid://ddioxuyjm5vbt" path="res://world/world.tscn" id="1_mtl36"]
-[ext_resource type="PackedScene" uid="uid://qwv6cnpiias4" path="res://creature/npc/alfred.tscn" id="2_l221o"]
 [ext_resource type="PackedScene" uid="uid://8jif2hfscjrg" path="res://creature/rabbit.tscn" id="3_nh7pq"]
 
 [node name="WorldBase" instance=ExtResource("1_mtl36")]
-layer_1/tile_data = PackedInt32Array(327692, 3, 131072)
-layer_2/tile_data = PackedInt32Array(786437, 196612, 0, 851977, 196612, 0, 983048, 196612, 0, 983046, 196612, 0, 655367, 196612, 0, 327691, 196612, 1, 196622, 196612, 1, 131083, 196612, 1, 196627, 196612, 1, 393222, 196612, 1, 1179660, 196612, 1, 917516, 196612, 1, 327702, 196612, 2, 458772, 196612, 2, 524311, 196612, 2, 196631, 196612, 2, 131089, 196612, 2, 65547, 196612, 2, 589828, 196612, 3, 720899, 196612, 3, 983042, 196612, 3, 851975, 196612, 3, 786444, 196612, 3, 1048590, 196612, 3, 1048595, 196612, 3, 1114137, 196612, 3, 851997, 196612, 3, 720922, 196612, 3, 720913, 196612, 3)
+layer_2/tile_data = PackedInt32Array(720901, 196612, 1, 917511, 196612, 0, 1048589, 196612, 0, 1114118, 196612, 0, 1179659, 196612, 0, 983050, 196612, 0, 917517, 196612, 0, 131086, 196612, 0, 196626, 196612, 0, 262164, 196612, 0, 327700, 196612, 0, 327699, 196612, 0, 393230, 196612, 0, 458767, 196612, 0, 458768, 196612, 0, 458769, 196612, 0, 524310, 196612, 0, 917530, 196612, 1, 917533, 196612, 1, 983069, 196612, 1, 1048605, 196612, 1, 1048604, 196612, 1, 1114137, 196612, 1, 1114136, 196612, 1, 1114135, 196612, 1, 1114134, 196612, 1, 1114132, 196612, 1, 1048595, 196612, 1, 851983, 196612, 1, 720911, 196612, 1, 655375, 196612, 1, 524292, 196612, 1, 524291, 196612, 1, 458755, 196612, 1, 458754, 196612, 1, 458753, 196612, 1, 655364, 196612, 1, 786437, 196612, 1, 458760, 196612, 1)
 
-[node name="Alfred" parent="." index="3" instance=ExtResource("2_l221o")]
-position = Vector2(557, 251)
-
-[node name="Rabbit" parent="." index="4" instance=ExtResource("3_nh7pq")]
+[node name="Rabbit" parent="." index="3" instance=ExtResource("3_nh7pq")]
 position = Vector2(356.283, 326.896)
 
-[connection signal="ready" from="Tree" to="Tree" method="toggle_obstacle" flags=18]
+[node name="Rabbit" parent="Rabbit" index="6" instance=ExtResource("3_nh7pq")]
+position = Vector2(389.717, 53.104)
+
+[node name="Rabbit" parent="Rabbit/Rabbit" index="6" instance=ExtResource("3_nh7pq")]
+position = Vector2(-456, -233)

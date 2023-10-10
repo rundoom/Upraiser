@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1dlk5hpb6kcu"]
+
+[ext_resource type="PackedScene" uid="uid://cu8hvlvwa1ila" path="res://loot/food.tscn" id="1_t3h8b"]
+[ext_resource type="Texture2D" uid="uid://w3cikvg7x277" path="res://world/трава(готовая).png" id="2_24p6t"]
+
+[node name="Grass" instance=ExtResource("1_t3h8b")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_24p6t")
+region_rect = Rect2(2, 0, 30, 32)
