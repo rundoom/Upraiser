@@ -74,7 +74,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [12.0, 4.0]
+"values": [12.0, 0.01]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -154,6 +154,7 @@ color = Color(1, 1, 1, 0.556863)
 [node name="FoodForStomach" type="RigidBody2D"]
 collision_layer = 128
 collision_mask = 128
+continuous_cd = 1
 script = ExtResource("1_5m1sb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

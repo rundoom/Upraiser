@@ -9,8 +9,8 @@ layer_2/tile_data = PackedInt32Array(720901, 196612, 1, 917511, 196612, 0, 10485
 [node name="Rabbit" parent="." index="3" instance=ExtResource("3_nh7pq")]
 position = Vector2(356.283, 326.896)
 
-[node name="Rabbit" parent="Rabbit" index="6" instance=ExtResource("3_nh7pq")]
-position = Vector2(389.717, 53.104)
+[node name="Rabbit2" parent="." index="4" instance=ExtResource("3_nh7pq")]
+position = Vector2(746, 380)
 
-[node name="Rabbit" parent="Rabbit/Rabbit" index="6" instance=ExtResource("3_nh7pq")]
-position = Vector2(-456, -233)
+[node name="Rabbit3" parent="." index="5" instance=ExtResource("3_nh7pq")]
+position = Vector2(290, 147)
