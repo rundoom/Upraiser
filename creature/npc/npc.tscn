@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://cqwsdxnbwchf4"]
+[gd_scene load_steps=20 format=3 uid="uid://cqwsdxnbwchf4"]
 
 [ext_resource type="Script" path="res://creature/npc/npc.gd" id="1_im2i3"]
+[ext_resource type="Shape2D" uid="uid://c4055xcr2dnjy" path="res://creature/npc/detector_shape.tres" id="2_m1ka3"]
 [ext_resource type="Texture2D" uid="uid://cncuw7neav4lr" path="res://general/tilemap.png" id="2_xr4ky"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ahl13"]
@@ -126,6 +127,7 @@ input_pickable = true
 motion_mode = 1
 safe_margin = 5.0
 script = ExtResource("1_im2i3")
+detector_shape = ExtResource("2_m1ka3")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ahl13")

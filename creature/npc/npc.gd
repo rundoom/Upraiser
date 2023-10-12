@@ -17,7 +17,7 @@ class_name NPC
 @export var food :Array[Food] = []
 
 @onready var space_state = get_world_2d().direct_space_state
-@onready var detector_shape = preload("res://creature/npc/detector_shape.tres")
+@export var detector_shape: Shape2D 
 
 @onready var world := get_tree().get_first_node_in_group("world") as WorldGame
 @onready var animated_sprite_2d: AnimatedSprite2D = $Rotator/AnimatedSprite2D

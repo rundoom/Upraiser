@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cu8hvlvwa1ila" path="res://loot/food.tscn" id="1_u7pv3"]
 [ext_resource type="Texture2D" uid="uid://bn7t3lfpcgd78" path="res://loot/apple2.png" id="2_jj8gs"]
 [ext_resource type="Texture2D" uid="uid://bk1ae7winhqnb" path="res://loot/apple3.png" id="3_jummf"]
-[ext_resource type="Texture2D" uid="uid://bxtq4rqca4yhp" path="res://loot/apple4.png" id="4_iekmu"]
+[ext_resource type="Texture2D" uid="uid://bxtq4rqca4yhp" path="res://out/apple4.png" id="4_iekmu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d28tg"]
 animations = [{

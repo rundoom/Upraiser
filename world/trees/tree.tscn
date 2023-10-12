@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://vyjttmqiweit"]
+[gd_scene load_steps=6 format=3 uid="uid://vyjttmqiweit"]
 
 [ext_resource type="Script" path="res://world/trees/tree.gd" id="1_vtnow"]
+[ext_resource type="PackedScene" uid="uid://dc3qglde23yhg" path="res://loot/fruit.tscn" id="2_1pktv"]
 [ext_resource type="Texture2D" uid="uid://dfqsulpo331ot" path="res://world/trees/sprites/tree.png" id="2_y2fs6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pw5dl"]
@@ -15,6 +16,7 @@ point_count = 6
 [node name="Tree" type="StaticBody2D" groups=["$spawn_fruit"]]
 collision_layer = 5
 script = ExtResource("1_vtnow")
+FruitSc = ExtResource("2_1pktv")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(2.2, -44.225)
