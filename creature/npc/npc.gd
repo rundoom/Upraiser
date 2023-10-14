@@ -31,6 +31,9 @@ var current_path: Array[Vector2]
 
 var under_cursor = false
 
+enum States {IDLE, EAT, RUN}
+var current_state: States
+
 var is_picked: bool = false:
 	set(val):
 		toggle_ui_signals(val)
@@ -47,6 +50,10 @@ signal food_changed(npc, food)
 
 
 func _physics_process(delta: float) -> void:
+	if current_state == States.EAT:
+		animated_sprite_2d.play("eat")
+		return
+		
 	check_needs()
 	
 	if get_real_velocity().x > 0:
@@ -65,8 +72,10 @@ func _physics_process(delta: float) -> void:
 		if global_position.distance_to(current_path.front()) < 15:
 			current_path.remove_at(0)
 		
-		animated_sprite_2d.play()
+		animated_sprite_2d.play("run")
 		safe_margin = MARGIN_MOVE
+	else:
+		animated_sprite_2d.play("idle")
 
 	if energy >= real_speed_factor:
 		move_and_slide()
@@ -136,9 +145,12 @@ func is_direct_vision() -> bool:
 
 func _on_picker_body_entered(body: Node2D) -> void:
 	if body == move_to:
+		animated_sprite_2d.play("eat")
 		food.append(body)
 		food_changed.emit(self, food)
 		body.get_parent().remove_child(body)
+		current_state = States.EAT
+		get_tree().create_timer(1).timeout.connect(func(): current_state = States.IDLE)
 		$Label.text = str(food.map(func(it): return it.volume))
 
 

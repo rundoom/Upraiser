@@ -26,6 +26,16 @@ region = Rect2(0, 128, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_03oe2"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"eat",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p2cbu")
@@ -43,7 +53,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_eudbv")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"run",
 "speed": 5.0
 }]
 
@@ -60,7 +70,7 @@ texture_filter = 0
 position = Vector2(9, -11)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_03oe2")
-animation = &"walk"
+animation = &"eat"
 
 [node name="ProgressBar" parent="." index="3"]
 offset_left = -57.0

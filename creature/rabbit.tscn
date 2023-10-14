@@ -1,8 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://8jif2hfscjrg"]
+[gd_scene load_steps=10 format=3 uid="uid://8jif2hfscjrg"]
 
 [ext_resource type="PackedScene" uid="uid://cqwsdxnbwchf4" path="res://creature/npc/npc.tscn" id="1_kuli1"]
 [ext_resource type="Texture2D" uid="uid://bkfh7c6es6kqu" path="res://creature/npc/заяц(почти готов).png" id="2_mywt6"]
 [ext_resource type="Script" path="res://creature/rabbit.gd" id="2_uebtf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rs1pw"]
+atlas = ExtResource("2_mywt6")
+region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_he46l"]
 atlas = ExtResource("2_mywt6")
@@ -24,6 +28,14 @@ region = Rect2(192, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_rs1pw")
+}],
+"loop": true,
+"name": &"eat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_he46l")
 }, {
 "duration": 1.0,
@@ -31,7 +43,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -50,4 +62,4 @@ script = ExtResource("2_uebtf")
 
 [node name="AnimatedSprite2D" parent="Rotator" index="0"]
 sprite_frames = SubResource("SpriteFrames_l6sil")
-animation = &"run"
+animation = &"eat"
