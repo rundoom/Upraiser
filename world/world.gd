@@ -6,6 +6,7 @@ class_name WorldGame
 var astar := AStar2D.new()
 var cells_map := {}
 var materialized_scenes := {}
+var ground_cells : Array[Vector2i] = []
 
 
 class TileType:
@@ -21,7 +22,18 @@ func grow_plants():
 		var current_atlas = get_cell_atlas_coords(2, plant)
 		if current_atlas.x == 0 or randf() > 1: continue
 		set_cell(2, plant, 4, Vector2i(current_atlas.x - 1, current_atlas.y))
+		
+	if ground_cells.is_empty():
+		ground_cells = get_used_cells(0).filter(filter_ground)
+	else:
+		var rnd_idx = randi_range(0, ground_cells.size())
+		var popped = ground_cells.pop_at(rnd_idx)
+		set_cell(2, popped, 4, Vector2i(3, randi_range(0, 1)))
 
+
+func filter_ground(it: Vector2i) -> bool:
+	var tile_data = get_cell_tile_data(0, it)
+	return tile_data.get_custom_data("is_ground") == true
 
 func create_pathfinding_points() -> void:
 	astar.clear()
