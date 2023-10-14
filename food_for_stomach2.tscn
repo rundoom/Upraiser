@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://bg6sno0tx8d3k"]
+
+[ext_resource type="PackedScene" uid="uid://cinitjid5qfc7" path="res://general/food_for_stomach.tscn" id="1_puu7g"]
+[ext_resource type="Shader" path="res://general/dissolve.gdshader" id="2_qgjg8"]
+[ext_resource type="Texture2D" uid="uid://bjj08gefq1voq" path="res://general/RadialGradient.png" id="3_0ijri"]
+[ext_resource type="Texture2D" uid="uid://w3cikvg7x277" path="res://world/трава(готовая).png" id="4_meuf4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l0wp8"]
+resource_local_to_scene = true
+radius = 12.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_whvdf"]
+resource_local_to_scene = true
+shader = ExtResource("2_qgjg8")
+shader_parameter/dissolveState = 0.0
+shader_parameter/border = Color(0.756863, 0.996078, 0.301961, 1)
+shader_parameter/border_ticc = 0.05
+shader_parameter/noise = ExtResource("3_0ijri")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_goa6u"]
+resource_local_to_scene = true
+emission_shape = 2
+emission_sphere_radius = 12.0
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, -50, 0)
+scale_min = 0.03
+scale_max = 0.06
+color = Color(1, 1, 1, 0.556863)
+
+[node name="FoodForStomach" instance=ExtResource("1_puu7g")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_l0wp8")
+
+[node name="SubViewportContainer" parent="." index="2"]
+material = SubResource("ShaderMaterial_whvdf")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -16.0
+offset_right = 15.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1)
+
+[node name="SubViewport" parent="SubViewportContainer" index="0"]
+size = Vector2i(30, 32)
+
+[node name="Sprite2D" parent="SubViewportContainer/SubViewport" index="0"]
+texture = ExtResource("4_meuf4")
+region_rect = Rect2(2, 0, 30, 32)
+
+[node name="Bubbles" parent="." index="3"]
+process_material = SubResource("ParticleProcessMaterial_goa6u")

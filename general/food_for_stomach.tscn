@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://general/dissolve.gdshader" id="1_rjp4b"]
 [ext_resource type="Texture2D" uid="uid://bjj08gefq1voq" path="res://general/RadialGradient.png" id="2_ers48"]
 [ext_resource type="Texture2D" uid="uid://ce5qdsrdt1612" path="res://general/bub.png" id="4_7ila8"]
-[ext_resource type="Texture2D" uid="uid://bxtq4rqca4yhp" path="res://out/apple4.png" id="4_ov5cw"]
+[ext_resource type="Texture2D" uid="uid://bxtq4rqca4yhp" path="res://loot/apple4big.png" id="4_aguyt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ajad"]
 resource_local_to_scene = true
@@ -167,11 +167,19 @@ libraries = {
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 material = SubResource("ShaderMaterial_wj5tq")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -11.4
 offset_top = -11.8
 offset_right = 102.6
 offset_bottom = 106.2
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.2, 0.2)
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 disable_3d = true
@@ -181,9 +189,10 @@ size = Vector2i(114, 118)
 render_target_update_mode = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
-texture = ExtResource("4_ov5cw")
+texture = ExtResource("4_aguyt")
 centered = false
-region_rect = Rect2(153, 153, 16, 16)
+region_enabled = true
+region_rect = Rect2(0, 0, 114, 118)
 
 [node name="Bubbles" type="GPUParticles2D" parent="."]
 amount = 25
