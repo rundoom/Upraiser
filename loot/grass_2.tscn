@@ -5,4 +5,4 @@
 [node name="Grass2" instance=ExtResource("1_divli")]
 
 [node name="Sprite2D" parent="." index="1"]
-region_rect = Rect2(1, 36, 30, 28)
+region_rect = Rect2(0, 32, 32, 32)
