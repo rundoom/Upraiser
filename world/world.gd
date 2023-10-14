@@ -33,6 +33,7 @@ func grow_plants():
 
 func filter_ground(it: Vector2i) -> bool:
 	var tile_data = get_cell_tile_data(0, it)
+	if tile_data == null: return false
 	return tile_data.get_custom_data("is_ground") == true
 
 func create_pathfinding_points() -> void:

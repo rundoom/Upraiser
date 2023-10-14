@@ -13,7 +13,7 @@ class_name NPC
 		
 @export var energy_consume_idle := 1
 
-@export var MAX_FOOD := 30
+@export var MAX_FOOD := 60
 @export var food :Array[Food] = []
 
 @onready var space_state = get_world_2d().direct_space_state
@@ -152,6 +152,8 @@ func _on_picker_body_entered(body: Node2D) -> void:
 		current_state = States.EAT
 		get_tree().create_timer(1).timeout.connect(func(): current_state = States.IDLE)
 		$Label.text = str(food.map(func(it): return it.volume))
+		current_path = []
+		$PathTracker.points = []
 
 
 func lost_food() -> void:

@@ -19,7 +19,7 @@ position = Vector2(290, 147)
 [node name="Alfred" parent="." index="6" instance=ExtResource("2_byhti")]
 position = Vector2(503.205, 140.963)
 
-[node name="Marker2D" type="Marker2D" parent="." index="8"]
+[node name="Marker2D" type="Marker2D" parent="." index="7"]
 position = Vector2(512.5, 352.5)
 
 [connection signal="ready" from="Tree" to="Tree" method="toggle_obstacle" flags=18]
