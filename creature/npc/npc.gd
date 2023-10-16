@@ -89,10 +89,10 @@ func _physics_process(delta: float) -> void:
 func energy_consume() -> void:
 	energy -= energy_consume_idle * 5
 	for it in food:
-		var food_value = it.dissolve_rate * it.dissolve_tick
+		var food_value = min(it.dissolve_rate * it.dissolve_tick, it.volume)
 		if food_value > MAX_ENERGY - energy: continue
 		
-		it.volume -= it.dissolve_tick
+		it.volume -= min(it.dissolve_tick, it.volume)
 		if it.volume <= 0:
 			food.erase(it)
 			it.queue_free()
