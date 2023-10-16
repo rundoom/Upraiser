@@ -26,7 +26,7 @@ func grow_plants():
 	if ground_cells.is_empty():
 		ground_cells = get_used_cells(0).filter(filter_ground)
 	else:
-		var rnd_idx = randi_range(0, ground_cells.size())
+		var rnd_idx = randi_range(0, ground_cells.size() - 1)
 		var popped = ground_cells.pop_at(rnd_idx)
 		set_cell(2, popped, 4, Vector2i(3, randi_range(0, 1)))
 
