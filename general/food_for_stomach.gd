@@ -62,10 +62,14 @@ func volume_changed(vol: int, max_vol: int) -> void:
 
 	animation_player.current_animation = "dissolving"
 	animation_player.pause()
-	var advance_to_pos = (animation_player.current_animation_length - (vol * (animation_player.current_animation_length / max_vol))) - animation_player.current_animation_position
+	var advance_to_pos = animation_player.current_animation_length - (vol * (animation_player.current_animation_length / max_vol))
+	var advance_secs = advance_to_pos - animation_player.current_animation_position
+	
+	printt(vol, advance_to_pos)
 
 	if is_just_started: 
-		animation_player.advance(advance_to_pos)
-	elif advance_to_pos > 0:
+		animation_player.advance(advance_secs)
+	elif advance_secs > 0:
 		animation_player.play("dissolving")
-		get_tree().create_timer(advance_to_pos).timeout.connect(animation_player.pause)
+		if advance_to_pos < animation_player.current_animation_length:
+			get_tree().create_timer(advance_secs).timeout.connect(animation_player.pause)
