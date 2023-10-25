@@ -101,18 +101,6 @@ tracks/5/keys = {
 "update": 1,
 "values": [0]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("..:volume")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [15]
-}
 
 [sub_resource type="Animation" id="Animation_ankvu"]
 resource_name = "grow"
@@ -241,6 +229,9 @@ _data = {
 
 [node name="Fruit" instance=ExtResource("1_u7pv3")]
 script = ExtResource("1_b448m")
+MAX_VOLUME = 20
+volume = 20
+item_name = "Apple"
 
 [node name="CollisionShape2D" parent="." index="0"]
 visible = false
@@ -268,3 +259,5 @@ autoplay = "grow"
 libraries = {
 "": SubResource("AnimationLibrary_t5hyw")
 }
+
+[connection signal="ready" from="." to="." method="_on_ready" flags=18]

@@ -13,7 +13,7 @@ class_name NPC
 		
 @export var energy_consume_idle := 1
 
-@export var MAX_FOOD := 60
+@export var MAX_FOOD := 2
 @export var food :Array[Food] = []
 
 @onready var space_state = get_world_2d().direct_space_state
@@ -89,10 +89,11 @@ func _physics_process(delta: float) -> void:
 func energy_consume() -> void:
 	energy -= energy_consume_idle * 5
 	for it in food:
-		var food_value = min(it.dissolve_rate * it.dissolve_tick, it.volume)
-		if food_value > MAX_ENERGY - energy: continue
+		var volume_subtractor = min(it.dissolve_tick, it.volume)
+		var food_value = volume_subtractor * it.dissolve_rate
+
+		it.volume -= volume_subtractor
 		
-		it.volume -= min(it.dissolve_tick, it.volume)
 		if it.volume <= 0:
 			food.erase(it)
 			it.queue_free()
