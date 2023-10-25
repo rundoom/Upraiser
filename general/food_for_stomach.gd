@@ -4,7 +4,7 @@ class_name FoodForStomach
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $SubViewportContainer/SubViewport/Sprite2D
-
+@onready var animation_pauser: Timer = $AnimationPauser
 
 @export_group("image")
 @export var food_image: Texture2D:
@@ -72,4 +72,5 @@ func volume_changed(vol: int, max_vol: int) -> void:
 	elif advance_secs > 0:
 		animation_player.play("dissolving")
 		if advance_to_pos < animation_player.current_animation_length:
-			get_tree().create_timer(advance_secs).timeout.connect(animation_player.pause)
+			animation_pauser.wait_time = animation_pauser.time_left + advance_to_pos
+			animation_pauser.start()

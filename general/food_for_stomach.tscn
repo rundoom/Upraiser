@@ -198,3 +198,7 @@ region_rect = Rect2(0, 0, 114, 118)
 amount = 25
 process_material = SubResource("ParticleProcessMaterial_s26wy")
 texture = ExtResource("4_7ila8")
+
+[node name="AnimationPauser" type="Timer" parent="."]
+
+[connection signal="timeout" from="AnimationPauser" to="AnimationPlayer" method="pause"]

@@ -13,7 +13,7 @@ class_name NPC
 		
 @export var energy_consume_idle := 1
 
-@export var MAX_FOOD := 2
+@export var MAX_FOOD := 60
 @export var food :Array[Food] = []
 
 @onready var space_state = get_world_2d().direct_space_state

@@ -259,5 +259,3 @@ autoplay = "grow"
 libraries = {
 "": SubResource("AnimationLibrary_t5hyw")
 }
-
-[connection signal="ready" from="." to="." method="_on_ready" flags=18]
