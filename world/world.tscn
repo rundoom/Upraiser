@@ -176,9 +176,9 @@ position = Vector2(956, 199)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("7_o7yiw")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(648, 420)
+[node name="MainCamera" type="Camera2D" parent="." groups=["main_camera"]]
 enabled = false
 zoom = Vector2(4, 4)
+position_smoothing_enabled = true
 
 [connection signal="ready" from="." to="." method="create_pathfinding_points"]

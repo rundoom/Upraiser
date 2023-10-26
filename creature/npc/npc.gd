@@ -22,6 +22,7 @@ class_name NPC
 @onready var world := get_tree().get_first_node_in_group("world") as WorldGame
 @onready var animated_sprite_2d: AnimatedSprite2D = $Rotator/AnimatedSprite2D
 @onready var rotator: Marker2D = $Rotator
+@onready var main_camera := get_tree().get_first_node_in_group("main_camera") as Camera2D
 
 static var MARGIN_HOLD := 5.0
 static var MARGIN_MOVE := 0.1
@@ -41,9 +42,12 @@ var is_picked: bool = false:
 			for it in get_tree().get_nodes_in_group("pickable"):
 				if it == self: continue
 				it.is_picked = false
-#				it.modulate = Color.WHITE
+			main_camera.enabled = true
+			main_camera.reparent(self, false)
+		else:
+			main_camera.reparent(world, false)
+			main_camera.enabled = false
 		is_picked = val
-#		modulate = Color.BLACK
 			
 			
 signal food_changed(npc, food)
@@ -181,8 +185,9 @@ func _on_mouse_exited() -> void:
 
 func _input(event: InputEvent) -> void:
 	if under_cursor and event.is_action_pressed("LMB"):
-		print(self)
 		is_picked = true
+	if is_picked and event.is_action_pressed("RMB"):
+		is_picked = false
 
 
 func toggle_ui_signals(enable: bool):
@@ -194,3 +199,7 @@ func toggle_ui_signals(enable: bool):
 			food_changed.emit(self, food)
 		else:
 			if food_changed.is_connected(it.food_change): food_changed.disconnect(it.food_change)
+
+
+func _on_tree_exiting() -> void:
+	is_picked = false
