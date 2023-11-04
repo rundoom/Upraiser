@@ -9,7 +9,10 @@ class_name NPC
 	set(val):
 		energy = val
 		$ProgressBar.value = energy
+		energy_changed.emit(self, energy, MAX_ENERGY)
 		if energy <= 0 and food.is_empty(): queue_free()
+		
+signal energy_changed(npc, energy, max_energy)
 		
 @export var energy_consume_idle := 1
 
@@ -23,6 +26,8 @@ class_name NPC
 @onready var animated_sprite_2d: AnimatedSprite2D = $Rotator/AnimatedSprite2D
 @onready var rotator: Marker2D = $Rotator
 @onready var main_camera := get_tree().get_first_node_in_group("main_camera") as MainCamera
+@onready var ui_layer := get_tree().get_first_node_in_group("UI") as UILayer
+@onready var move_pointer := get_tree().get_first_node_in_group("move_pointer") as Marker2D
 
 static var MARGIN_HOLD := 5.0
 static var MARGIN_MOVE := 0.1
@@ -31,6 +36,7 @@ var move_to: Node2D
 var current_path: Array[Vector2] 
 
 var under_cursor = false
+var under_control = false
 
 enum States {IDLE, EAT, RUN}
 var current_state: States
@@ -43,12 +49,9 @@ var is_picked: bool = false:
 			for it in get_tree().get_nodes_in_group("pickable"):
 				if it == self: continue
 				it.is_picked = false
-#			main_camera.enabled = true
 			main_camera.stick_to(self)
 		else:
 			main_camera.stick_to(null)
-#			main_camera.reparent(world, false)
-#			main_camera.enabled = false
 		is_picked = val
 			
 			
@@ -60,7 +63,7 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play("eat")
 		return
 		
-	check_needs()
+	if not under_control: check_needs()
 	
 	if get_real_velocity().x > 0:
 		rotator.scale = Vector2(1, 1)
@@ -186,8 +189,17 @@ func _on_mouse_exited() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if under_cursor and event.is_action_pressed("LMB"):
-		is_picked = true
+	if event.is_action_pressed("LMB"):
+		if under_cursor:
+			is_picked = true
+		elif under_control:
+			move_to = move_pointer
+			move_pointer.global_position = get_global_mouse_position()
+			if is_direct_vision():
+				current_path = [move_to.global_position]
+			else:
+				current_path = world.get_point_path(global_position, move_to.global_position)
+		
 	if is_picked and event.is_action_pressed("RMB"):
 		is_picked = false
 
@@ -195,14 +207,26 @@ func _input(event: InputEvent) -> void:
 func toggle_ui_signals(enable: bool):
 	var food_presenters = get_tree().get_nodes_in_group("$food_change")
 	
-	for it in food_presenters:
-		if enable:
+	if !energy_changed.is_connected(ui_layer.touch): energy_changed.connect(ui_layer.touch)
+
+	if enable:
+		energy_changed.emit(self, energy, MAX_ENERGY)
+		if !energy_changed.is_connected(ui_layer.touch): energy_changed.connect(ui_layer.touch)
+		for it in food_presenters:
 			if !food_changed.is_connected(it.food_change): food_changed.connect(it.food_change)
 			food_changed.emit(self, food)
-		else:
+	else:
+		under_control = false
+		energy_changed.emit(null, energy, MAX_ENERGY)
+		if energy_changed.is_connected(ui_layer.touch): energy_changed.disconnect(ui_layer.touch)
+		for it in food_presenters:
 			food_changed.emit(null, food)
 			if food_changed.is_connected(it.food_change): food_changed.disconnect(it.food_change)
-
+			
+			
+func obey():
+	under_control = true
+	
 
 func _on_tree_exiting() -> void:
 	is_picked = false
