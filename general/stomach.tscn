@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dkdotu1gx5ngd" path="res://general/желудок(внутр).png" id="3_1f3b0"]
 
 [node name="Stomach" type="StaticBody2D" groups=["$food_change"]]
+visible = false
 collision_layer = 128
 collision_mask = 128
 script = ExtResource("1_5etsb")

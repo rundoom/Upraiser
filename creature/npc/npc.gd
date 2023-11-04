@@ -39,6 +39,7 @@ var is_picked: bool = false:
 	set(val):
 		toggle_ui_signals(val)
 		if val:
+			print(self)
 			for it in get_tree().get_nodes_in_group("pickable"):
 				if it == self: continue
 				it.is_picked = false
@@ -94,11 +95,11 @@ func _physics_process(delta: float) -> void:
 func energy_consume() -> void:
 	energy -= energy_consume_idle * 5
 	for it in food:
-		var volume_subtractor = min(it.dissolve_tick, it.volume)
+		var volume_subtractor = min((MAX_ENERGY - energy) / it.dissolve_rate, it.dissolve_tick, it.volume)
 		var food_value = volume_subtractor * it.dissolve_rate
 
 		it.volume -= volume_subtractor
-		
+
 		if it.volume <= 0:
 			food.erase(it)
 			it.queue_free()

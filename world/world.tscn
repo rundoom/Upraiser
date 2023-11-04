@@ -179,6 +179,7 @@ position = Vector2(956, 199)
 [node name="CanvasLayer" parent="." instance=ExtResource("7_o7yiw")]
 
 [node name="MainCamera" type="Camera2D" parent="." groups=["main_camera"]]
+position = Vector2(577, 326)
 position_smoothing_enabled = true
 script = ExtResource("7_8nthv")
 
