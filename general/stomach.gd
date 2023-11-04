@@ -7,6 +7,9 @@ var current_foods: Array[Food] = []
 
 
 func food_change(npc: NPC, foods: Array[Food]) -> void:
+	visible = npc != null
+	if not visible: return
+	
 	var is_npc_changed = false
 	if current_npc != npc:
 		current_npc = npc

@@ -61,5 +61,6 @@ animations = [{
 script = ExtResource("2_uebtf")
 
 [node name="AnimatedSprite2D" parent="Rotator" index="0"]
+position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_l6sil")
 animation = &"eat"

@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddioxuyjm5vbt"]
+[gd_scene load_steps=12 format=3 uid="uid://ddioxuyjm5vbt"]
 
 [ext_resource type="PackedScene" uid="uid://bic2gwruiruji" path="res://creature/npc_manager.tscn" id="1_k7wb5"]
 [ext_resource type="Script" path="res://world/world.gd" id="2_fykyo"]
 [ext_resource type="Texture2D" uid="uid://c23nencvcfrwp" path="res://world/26de6996f7682487.png" id="3_1gjqf"]
 [ext_resource type="Texture2D" uid="uid://w3cikvg7x277" path="res://world/трава(готовая).png" id="3_4bhle"]
 [ext_resource type="PackedScene" uid="uid://vyjttmqiweit" path="res://world/trees/tree.tscn" id="6_qme0r"]
+[ext_resource type="Script" path="res://world/MainCamera.gd" id="7_8nthv"]
 [ext_resource type="PackedScene" uid="uid://dld3slhpwbb0n" path="res://general/ui.tscn" id="7_o7yiw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bs3kg"]
@@ -151,6 +152,7 @@ sources/4 = SubResource("TileSetAtlasSource_q56jb")
 
 [node name="WorldBase" type="TileMap" groups=["world"]]
 y_sort_enabled = true
+texture_filter = 1
 tile_set = SubResource("TileSet_xib6k")
 format = 2
 layer_0/name = "ground"
@@ -177,8 +179,7 @@ position = Vector2(956, 199)
 [node name="CanvasLayer" parent="." instance=ExtResource("7_o7yiw")]
 
 [node name="MainCamera" type="Camera2D" parent="." groups=["main_camera"]]
-enabled = false
-zoom = Vector2(4, 4)
 position_smoothing_enabled = true
+script = ExtResource("7_8nthv")
 
 [connection signal="ready" from="." to="." method="create_pathfinding_points"]

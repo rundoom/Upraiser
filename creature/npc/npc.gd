@@ -22,7 +22,7 @@ class_name NPC
 @onready var world := get_tree().get_first_node_in_group("world") as WorldGame
 @onready var animated_sprite_2d: AnimatedSprite2D = $Rotator/AnimatedSprite2D
 @onready var rotator: Marker2D = $Rotator
-@onready var main_camera := get_tree().get_first_node_in_group("main_camera") as Camera2D
+@onready var main_camera := get_tree().get_first_node_in_group("main_camera") as MainCamera
 
 static var MARGIN_HOLD := 5.0
 static var MARGIN_MOVE := 0.1
@@ -42,11 +42,12 @@ var is_picked: bool = false:
 			for it in get_tree().get_nodes_in_group("pickable"):
 				if it == self: continue
 				it.is_picked = false
-			main_camera.enabled = true
-			main_camera.reparent(self, false)
+#			main_camera.enabled = true
+			main_camera.stick_to(self)
 		else:
-			main_camera.reparent(world, false)
-			main_camera.enabled = false
+			main_camera.stick_to(null)
+#			main_camera.reparent(world, false)
+#			main_camera.enabled = false
 		is_picked = val
 			
 			
@@ -198,6 +199,7 @@ func toggle_ui_signals(enable: bool):
 			if !food_changed.is_connected(it.food_change): food_changed.connect(it.food_change)
 			food_changed.emit(self, food)
 		else:
+			food_changed.emit(null, food)
 			if food_changed.is_connected(it.food_change): food_changed.disconnect(it.food_change)
 
 
