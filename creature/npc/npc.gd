@@ -29,6 +29,8 @@ signal energy_changed(npc, energy, max_energy)
 @onready var ui_layer := get_tree().get_first_node_in_group("UI") as UILayer
 @onready var move_pointer := get_tree().get_first_node_in_group("move_pointer") as Marker2D
 
+@export var allowed_food: Array[StringName]
+
 static var MARGIN_HOLD := 5.0
 static var MARGIN_MOVE := 0.1
 
@@ -125,7 +127,7 @@ func check_needs() -> void:
 		
 		move_to = null
 		
-		for food_target in intersects.filter(func(it): return it.collider.is_in_group("edable")):
+		for food_target in intersects.filter(func(it): return it.collider.is_in_group("edable") and _is_group_intersects(it.collider.get_groups())):
 			if move_to == null or global_position.distance_to(food_target.collider.global_position) < global_position.distance_to(move_to.global_position):
 				move_to = food_target.collider
 				
@@ -156,6 +158,10 @@ func is_direct_vision() -> bool:
 
 func _on_picker_body_entered(body: Node2D) -> void:
 	if body == move_to:
+		if not _is_group_intersects(body.get_groups()):
+			move_to = null
+			return
+			
 		animated_sprite_2d.play("eat")
 		food.append(body)
 		food_changed.emit(self, food)
@@ -196,12 +202,12 @@ func _input(event: InputEvent) -> void:
 			is_some_selected = true
 		elif under_control:
 			var item_clicked = world.get_item_in(get_global_mouse_position())
-			if item_clicked == null:
+			if item_clicked == null or not (food.reduce(func(acc, it): return it.volume + acc, 0) < MAX_FOOD / 2 and _is_group_intersects(item_clicked.get_groups())):
 				move_to = world.materialize_tile(get_global_mouse_position(), 2, 64)
 				if move_to == null:
 					move_to = move_pointer
 					move_pointer.global_position = get_global_mouse_position()
-			elif food.reduce(func(acc, it): return it.volume + acc, 0) < MAX_FOOD / 2:
+			else:
 				move_to = item_clicked
 				if $Picker.overlaps_body(item_clicked):
 					_on_picker_body_entered(item_clicked)
@@ -244,3 +250,7 @@ func obey():
 func _on_tree_exiting() -> void:
 	if is_picked: is_some_selected = false
 	is_picked = false
+
+
+func _is_group_intersects(food_groups: Array[StringName]):
+	return food_groups.any(func(it): return allowed_food.has(it))

@@ -2,6 +2,7 @@ extends NPC
 
 
 func check_needs() -> void:
+	super.check_needs()
 	if is_current_path():
 		return
 	

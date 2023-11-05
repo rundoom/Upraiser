@@ -59,6 +59,7 @@ animations = [{
 
 [node name="Rabbit" instance=ExtResource("1_kuli1")]
 script = ExtResource("2_uebtf")
+allowed_food = Array[StringName]([&"by:rabbit"])
 
 [node name="AnimatedSprite2D" parent="Rotator" index="0"]
 position = Vector2(0, -13)

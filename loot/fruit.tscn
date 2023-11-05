@@ -227,7 +227,7 @@ _data = {
 "rot": SubResource("Animation_1unfj")
 }
 
-[node name="Fruit" instance=ExtResource("1_u7pv3")]
+[node name="Fruit" groups=["by:human"] instance=ExtResource("1_u7pv3")]
 script = ExtResource("1_b448m")
 MAX_VOLUME = 20
 volume = 20

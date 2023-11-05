@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cu8hvlvwa1ila" path="res://loot/food.tscn" id="1_t3h8b"]
 [ext_resource type="Texture2D" uid="uid://w3cikvg7x277" path="res://world/трава(готовая).png" id="2_24p6t"]
 
-[node name="Grass" instance=ExtResource("1_t3h8b")]
+[node name="Grass" groups=["by:rabbit"] instance=ExtResource("1_t3h8b")]
 dissolve_tick = 4
 dissolve_rate = 5
 
