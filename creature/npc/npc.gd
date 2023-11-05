@@ -56,7 +56,7 @@ var is_picked: bool = false:
 				if it == self: continue
 				it.is_picked = false
 			main_camera.stick_to(self)
-		else:
+		elif is_picked:
 			main_camera.stick_to(null)
 		is_picked = val
 			
