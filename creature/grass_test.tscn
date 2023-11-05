@@ -6,6 +6,7 @@
 
 [node name="WorldBase" instance=ExtResource("1_mtl36")]
 layer_1/tile_data = PackedInt32Array(131091, 3, 131072)
+layer_2/tile_data = PackedInt32Array(589848, 4, 0, 655384, 4, 0, 720920, 4, 0, 720921, 4, 0, 720922, 4, 0, 655386, 4, 0, 589850, 4, 0, 589849, 4, 0, 655385, 4, 0, 524312, 4, 0, 524313, 4, 0, 524314, 4, 0, 524315, 4, 0, 589851, 4, 0, 655387, 4, 0, 720923, 4, 0)
 
 [node name="Rabbit" parent="." index="3" instance=ExtResource("3_nh7pq")]
 position = Vector2(356.283, 326.896)

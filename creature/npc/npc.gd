@@ -204,9 +204,10 @@ func _input(event: InputEvent) -> void:
 			is_picked = true
 			is_some_selected = true
 		elif under_control:
+			var is_fit_capacity = food.reduce(func(acc, it): return it.volume + acc, 0) < MAX_FOOD / 2
 			var item_clicked = world.get_item_in(get_global_mouse_position())
-			if item_clicked == null or not (food.reduce(func(acc, it): return it.volume + acc, 0) < MAX_FOOD / 2 and _is_group_intersects(item_clicked.get_groups())):
-				move_to = world.materialize_tile(get_global_mouse_position(), 2, 64)
+			if item_clicked == null or not (is_fit_capacity and _is_group_intersects(item_clicked.get_groups())):
+				move_to = world.materialize_tile(get_global_mouse_position(), 2, 64) if is_fit_capacity else null
 				if move_to == null:
 					move_to = move_pointer
 					move_pointer.global_position = get_global_mouse_position()
@@ -216,10 +217,8 @@ func _input(event: InputEvent) -> void:
 					_on_picker_body_entered(item_clicked)
 					return
 				
-			if is_direct_vision():
-				current_path = [move_to.global_position]
-			else:
-				current_path = world.get_point_path(global_position, move_to.global_position)
+			if is_direct_vision(): current_path = [move_to.global_position]
+			else: current_path = world.get_point_path(global_position, move_to.global_position)
 				
 	if is_picked and event.is_action_pressed("RMB"):
 		is_picked = false

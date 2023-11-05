@@ -4,18 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bkfh7c6es6kqu" path="res://creature/npc/заяц(почти готов).png" id="2_mywt6"]
 [ext_resource type="Script" path="res://creature/rabbit.gd" id="2_uebtf"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6fphe"]
-particle_flag_disable_z = true
-direction = Vector3(0, -1, 0)
-gravity = Vector3(0, 200, 0)
-initial_velocity_min = 100.0
-initial_velocity_max = 100.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-scale_min = 2.0
-scale_max = 2.0
-color = Color(0, 1, 0, 1)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_rs1pw"]
 atlas = ExtResource("2_mywt6")
 region = Rect2(64, 64, 64, 64)
@@ -69,15 +57,27 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6fphe"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 200, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 2.0
+scale_max = 2.0
+color = Color(0, 0.8, 0, 1)
+
 [node name="Rabbit" instance=ExtResource("1_kuli1")]
 script = ExtResource("2_uebtf")
 allowed_food = Array[StringName]([&"by:rabbit"])
 
-[node name="FoodParticles" parent="Rotator" index="0"]
-amount = 16
-process_material = SubResource("ParticleProcessMaterial_6fphe")
-
-[node name="AnimatedSprite2D" parent="Rotator" index="1"]
+[node name="AnimatedSprite2D" parent="Rotator" index="0"]
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_l6sil")
 animation = &"eat"
+
+[node name="FoodParticles" parent="Rotator" index="1"]
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_6fphe")
