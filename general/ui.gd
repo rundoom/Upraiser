@@ -11,6 +11,8 @@ var selected_npc: NPC = null
 func touch(npc: NPC, energy: int, max_energy: int) -> void:
 	unit_energy.visible = npc != null
 	take_control.visible = npc != null
+	if selected_npc != npc: take_control.button_pressed = false
+
 	if npc == null:
 		if take_control.pressed.is_connected(selected_npc.obey): take_control.pressed.disconnect(selected_npc.obey)
 		return
