@@ -122,7 +122,9 @@ func materialize_tile(point: Vector2, tile_layer: int, collision_layers: int) ->
 	var data = get_cell_tile_data(tile_layer, i_coords)
 	if data == null: return null
 	
-	var scene_path = data.get_custom_data("scene_represent")
+	var scene_path = data.get_custom_data("scene_represent") as String
+	if scene_path == null or scene_path.is_empty(): return null
+	
 	var scene = materialized_scenes.get(scene_path, null) as PackedScene
 	if scene == null:
 		scene = load(scene_path)

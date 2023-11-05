@@ -197,8 +197,10 @@ func _input(event: InputEvent) -> void:
 		elif under_control:
 			var item_clicked = world.get_item_in(get_global_mouse_position())
 			if item_clicked == null:
-				move_to = move_pointer
-				move_pointer.global_position = get_global_mouse_position()
+				move_to = world.materialize_tile(get_global_mouse_position(), 2, 64)
+				if move_to == null:
+					move_to = move_pointer
+					move_pointer.global_position = get_global_mouse_position()
 			elif food.reduce(func(acc, it): return it.volume + acc, 0) < MAX_FOOD / 2:
 				move_to = item_clicked
 				if $Picker.overlaps_body(item_clicked):

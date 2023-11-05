@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgkeyj187wo4v"
-path="res://.godot/imported/вселениеoff.png-0fb7989c2d4781d24c74ce7e6a2686fd.ctex"
+uid="uid://pdh6lpucmjpf"
+path="res://.godot/imported/вселениеoff (4).png-478dfb2969f95c90dd9329bb3a8dbb93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://general/вселениеoff.png"
-dest_files=["res://.godot/imported/вселениеoff.png-0fb7989c2d4781d24c74ce7e6a2686fd.ctex"]
+source_file="res://general/вселениеoff (4).png"
+dest_files=["res://.godot/imported/вселениеoff (4).png-478dfb2969f95c90dd9329bb3a8dbb93.ctex"]
 
 [params]
 

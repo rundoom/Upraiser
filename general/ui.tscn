@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://general/ui.gd" id="1_o30ur"]
 [ext_resource type="PackedScene" uid="uid://dyvpdquiw64mk" path="res://general/stomach.tscn" id="1_s6ret"]
-[ext_resource type="Texture2D" uid="uid://bgkeyj187wo4v" path="res://general/вселениеoff.png" id="3_bwv62"]
-[ext_resource type="Texture2D" uid="uid://baeay8ahqsrf4" path="res://general/вселениеon.png" id="4_3620i"]
+[ext_resource type="Texture2D" uid="uid://pdh6lpucmjpf" path="res://general/вселениеoff (4).png" id="3_17blt"]
+[ext_resource type="Texture2D" uid="uid://d321hepsmmpib" path="res://general/вселениеon (4).png" id="4_rep4r"]
 
 [node name="UI" type="CanvasLayer" groups=["UI"]]
 script = ExtResource("1_o30ur")
@@ -23,5 +23,5 @@ offset_top = 269.0
 offset_right = 149.0
 offset_bottom = 333.0
 toggle_mode = true
-texture_normal = ExtResource("3_bwv62")
-texture_pressed = ExtResource("4_3620i")
+texture_normal = ExtResource("3_17blt")
+texture_pressed = ExtResource("4_rep4r")
