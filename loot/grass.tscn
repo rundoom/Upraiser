@@ -10,4 +10,4 @@ dissolve_rate = 5
 [node name="Sprite2D" parent="." index="1"]
 position = Vector2(0, 0)
 texture = ExtResource("2_24p6t")
-region_rect = Rect2(2, 0, 30, 32)
+region_rect = Rect2(0, 0, 32, 32)

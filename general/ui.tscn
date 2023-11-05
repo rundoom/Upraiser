@@ -29,3 +29,6 @@ offset_bottom = 333.0
 toggle_mode = true
 texture_normal = ExtResource("3_17blt")
 texture_pressed = ExtResource("4_rep4r")
+texture_disabled = ExtResource("4_rep4r")
+
+[connection signal="pressed" from="TakeControl" to="." method="_on_take_control_pressed"]

@@ -20,6 +20,7 @@ func touch(npc: NPC, energy: int, max_energy: int) -> void:
 
 	if npc == null:
 		if take_control.pressed.is_connected(selected_npc.obey): take_control.pressed.disconnect(selected_npc.obey)
+		take_control.disabled = false
 		return
 	
 	selected_npc = npc
@@ -39,3 +40,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("LMB"):
 		Input.set_custom_mouse_cursor(cursor_default)
 		
+
+func _on_take_control_pressed() -> void:
+	$TakeControl.disabled = true
