@@ -42,7 +42,10 @@ var under_control = false
 static var is_some_selected = false
 
 enum States {IDLE, EAT, RUN}
-var current_state: States
+var current_state: States:
+	set(val):
+		current_state = val
+		$Rotator/FoodParticles.emitting = current_state == States.EAT
 
 var is_picked: bool = false:
 	set(val):

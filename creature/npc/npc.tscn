@@ -88,6 +88,9 @@ position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_d8fct")
 animation = &"idle"
 
+[node name="FoodParticles" type="GPUParticles2D" parent="Rotator"]
+emitting = false
+
 [node name="Picker" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2

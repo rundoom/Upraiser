@@ -72,10 +72,6 @@ animations = [{
 }]
 
 [node name="Alfred" instance=ExtResource("1_bx3n4")]
-SPEED = 100
-MAX_ENERGY = 300.0
-energy_consume_idle = 1
-MAX_FOOD = 60
 allowed_food = Array[StringName]([&"by:human"])
 
 [node name="14" type="Sprite2D" parent="Rotator" index="0"]
