@@ -174,7 +174,6 @@ layer_2/tile_data = PackedInt32Array()
 script = ExtResource("2_fykyo")
 
 [node name="NPCManager" parent="." instance=ExtResource("1_k7wb5")]
-position = Vector2(956, 199)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("7_o7yiw")]
 

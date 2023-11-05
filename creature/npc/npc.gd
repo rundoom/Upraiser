@@ -195,13 +195,21 @@ func _input(event: InputEvent) -> void:
 			is_picked = true
 			is_some_selected = true
 		elif under_control:
-			move_to = move_pointer
-			move_pointer.global_position = get_global_mouse_position()
+			var item_clicked = world.get_item_in(get_global_mouse_position())
+			if item_clicked == null:
+				move_to = move_pointer
+				move_pointer.global_position = get_global_mouse_position()
+			elif food.reduce(func(acc, it): return it.volume + acc, 0) < MAX_FOOD / 2:
+				move_to = item_clicked
+				if $Picker.overlaps_body(item_clicked):
+					_on_picker_body_entered(item_clicked)
+					return
+				
 			if is_direct_vision():
 				current_path = [move_to.global_position]
 			else:
 				current_path = world.get_point_path(global_position, move_to.global_position)
-		
+				
 	if is_picked and event.is_action_pressed("RMB"):
 		is_picked = false
 		is_some_selected = false

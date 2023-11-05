@@ -108,8 +108,12 @@ func get_unit_in(point: Vector2i) -> Node2D:
 	return _node_at_point(point, 1)
 
 
-func get_item_in(point: Vector2i) -> Node2D:
+func _get_item_in(point: Vector2i) -> Node2D:
 	return _node_at_point(point, 2)
+	
+	
+func get_item_in(point: Vector2) -> Node2D:
+	return _node_at_point_exact(point, 2)
 	
 
 func materialize_tile(point: Vector2, tile_layer: int, collision_layers: int) -> Node2D:
@@ -134,6 +138,14 @@ func materialize_tile(point: Vector2, tile_layer: int, collision_layers: int) ->
 func _node_at_point(point: Vector2i, layer: int) -> Node2D:
 	var interceptor_point = PhysicsPointQueryParameters2D.new()
 	interceptor_point.position = map_to_local(point)
+	interceptor_point.collision_mask = layer
+	var colliders := space_state.intersect_point(interceptor_point)
+	return colliders[0]["collider"] if !colliders.is_empty() else null
+	
+
+func _node_at_point_exact(point: Vector2, layer: int) -> Node2D:
+	var interceptor_point = PhysicsPointQueryParameters2D.new()
+	interceptor_point.position = point
 	interceptor_point.collision_mask = layer
 	var colliders := space_state.intersect_point(interceptor_point)
 	return colliders[0]["collider"] if !colliders.is_empty() else null
