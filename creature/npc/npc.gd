@@ -37,6 +37,7 @@ var current_path: Array[Vector2]
 
 var under_cursor = false
 var under_control = false
+static var is_some_selected = false
 
 enum States {IDLE, EAT, RUN}
 var current_state: States
@@ -190,8 +191,9 @@ func _on_mouse_exited() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("LMB"):
-		if under_cursor:
+		if under_cursor and !is_some_selected:
 			is_picked = true
+			is_some_selected = true
 		elif under_control:
 			move_to = move_pointer
 			move_pointer.global_position = get_global_mouse_position()
@@ -202,6 +204,7 @@ func _input(event: InputEvent) -> void:
 		
 	if is_picked and event.is_action_pressed("RMB"):
 		is_picked = false
+		is_some_selected = false
 
 
 func toggle_ui_signals(enable: bool):
@@ -229,4 +232,5 @@ func obey():
 	
 
 func _on_tree_exiting() -> void:
+	if is_picked: is_some_selected = false
 	is_picked = false
