@@ -7,6 +7,11 @@ class_name UILayer
 
 var selected_npc: NPC = null
 
+@export_group("Cursors")
+@export var cursor_default: CompressedTexture2D
+@export var cursor_clicked: CompressedTexture2D
+@export_group("")
+
 
 func touch(npc: NPC, energy: int, max_energy: int) -> void:
 	unit_energy.visible = npc != null
@@ -26,3 +31,11 @@ func touch(npc: NPC, energy: int, max_energy: int) -> void:
 func _ready() -> void:
 	for it in get_children():
 		it.hide()
+
+
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("LMB"):
+		Input.set_custom_mouse_cursor(cursor_clicked)
+	if Input.is_action_just_released("LMB"):
+		Input.set_custom_mouse_cursor(cursor_default)
+		
