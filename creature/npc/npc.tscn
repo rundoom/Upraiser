@@ -70,7 +70,6 @@ animations = [{
 radius = 21.0
 
 [node name="NPC" type="CharacterBody2D" groups=["$check_needs", "$energy_consume", "pickable", "with_ui"]]
-process_mode = 4
 input_pickable = true
 motion_mode = 1
 safe_margin = 5.0

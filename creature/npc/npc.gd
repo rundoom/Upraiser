@@ -188,10 +188,6 @@ func is_current_path() -> bool:
 	return current_path != null and !current_path.is_empty()
 
 
-func enable_physics():
-	process_mode = Node.PROCESS_MODE_INHERIT
-
-
 func _on_mouse_entered() -> void:
 	under_cursor = true
 
