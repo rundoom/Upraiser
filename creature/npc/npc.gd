@@ -10,7 +10,7 @@ class_name NPC
 		energy = val
 		$ProgressBar.value = energy
 		energy_changed.emit(self, energy, MAX_ENERGY)
-		if energy <= 0 and food.is_empty(): queue_free()
+		if energy <= 0 and food.is_empty(): die()
 		
 signal energy_changed(npc, energy, max_energy)
 		
@@ -248,8 +248,9 @@ func toggle_ui_signals(enable: bool):
 func obey():
 	under_control = true
 	
-
-func _on_tree_exiting() -> void:
+	
+func die():
+	queue_free()
 	if is_picked: is_some_selected = false
 	is_picked = false
 

@@ -14,7 +14,7 @@ func toggle_obstacle() -> void:
 
 
 func spawn_fruit() -> void:
-	if $FruitHolder.get_child_count() >= 5: return
+	if randf() < 0.9: return
 	var fruit = FruitSc.instantiate() as Fruit
 	fruit_pointer.progress_ratio = randf()
 	

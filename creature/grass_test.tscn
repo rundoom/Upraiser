@@ -25,3 +25,8 @@ position = Vector2(503.205, 140.963)
 
 [node name="Marker2D" type="Marker2D" parent="." index="7"]
 position = Vector2(512.5, 352.5)
+
+[connection signal="tree_exiting" from="Rabbit" to="Rabbit" method="_on_tree_exiting" flags=18]
+[connection signal="tree_exiting" from="Rabbit2" to="Rabbit2" method="_on_tree_exiting" flags=18]
+[connection signal="tree_exiting" from="Rabbit3" to="Rabbit3" method="_on_tree_exiting" flags=18]
+[connection signal="tree_exiting" from="Alfred" to="Alfred" method="_on_tree_exiting" flags=18]
