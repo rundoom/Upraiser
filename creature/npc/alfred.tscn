@@ -38,6 +38,14 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dsok5")
 }],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsok5")
+}],
 "loop": true,
 "name": &"eat",
 "speed": 5.0
@@ -85,7 +93,7 @@ texture_filter = 0
 position = Vector2(9, -11)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_03oe2")
-animation = &"run"
+animation = &"die"
 
 [node name="ProgressBar" parent="." index="3"]
 offset_left = -57.0

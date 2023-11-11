@@ -41,11 +41,12 @@ var under_cursor = false
 var under_control = false
 static var is_some_selected = false
 
-enum States {IDLE, EAT, RUN}
+enum States {IDLE, EAT, RUN, DIE}
 var current_state: States:
 	set(val):
 		current_state = val
 		$Rotator/FoodParticles.emitting = current_state == States.EAT
+
 
 var is_picked: bool = false:
 	set(val):
@@ -65,6 +66,7 @@ signal food_changed(npc, food)
 
 
 func _physics_process(delta: float) -> void:
+	if current_state == States.DIE: return
 	if current_state == States.EAT:
 		animated_sprite_2d.play("eat")
 		return
@@ -250,9 +252,13 @@ func obey():
 	
 	
 func die():
-	queue_free()
 	if is_picked: is_some_selected = false
 	is_picked = false
+	input_pickable = false
+	$PathTracker.points = []
+	current_state = States.DIE
+	animated_sprite_2d.play("die")
+	if !animated_sprite_2d.animation_finished.is_connected(queue_free): animated_sprite_2d.animation_finished.connect(queue_free)
 
 
 func _is_group_intersects(food_groups: Array[StringName]):
