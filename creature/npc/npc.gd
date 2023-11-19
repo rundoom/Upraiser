@@ -259,3 +259,9 @@ func die():
 
 func _is_group_intersects(food_groups: Array[StringName]):
 	return food_groups.any(func(it): return allowed_food.has(it))
+
+
+func sync_navigation() -> void:
+	if !world.is_nav_ready:
+		process_mode = Node.PROCESS_MODE_DISABLED
+		world.nav_ready.connect(func(): process_mode = Node.PROCESS_MODE_INHERIT)

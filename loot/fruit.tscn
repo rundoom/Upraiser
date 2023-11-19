@@ -234,7 +234,6 @@ volume = 20
 item_name = "Apple"
 
 [node name="CollisionShape2D" parent="." index="0"]
-visible = false
 disabled = true
 
 [node name="Sprite2D" parent="." index="1"]

@@ -1,11 +1,22 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqwsdxnbwchf4"]
+[gd_scene load_steps=16 format=3 uid="uid://cqwsdxnbwchf4"]
 
 [ext_resource type="Script" path="res://creature/npc/npc.gd" id="1_im2i3"]
 [ext_resource type="Shape2D" uid="uid://c4055xcr2dnjy" path="res://creature/npc/detector_shape.tres" id="2_m1ka3"]
 [ext_resource type="Texture2D" uid="uid://cncuw7neav4lr" path="res://general/tilemap.png" id="2_xr4ky"]
+[ext_resource type="Shader" path="res://creature/npc/under_cursor.gdshader" id="3_mqs8u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ahl13"]
 radius = 14.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjjiu"]
+resource_local_to_scene = true
+shader = ExtResource("3_mqs8u")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_scale = 1.2
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q5tc4"]
 atlas = ExtResource("2_xr4ky")
@@ -83,9 +94,12 @@ shape = SubResource("CircleShape2D_ahl13")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rotator"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_xjjiu")
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_d8fct")
 animation = &"idle"
+frame = 1
+frame_progress = 0.434507
 
 [node name="FoodParticles" type="GPUParticles2D" parent="Rotator"]
 emitting = false
@@ -118,4 +132,5 @@ width = 3.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="ready" from="." to="." method="sync_navigation"]
 [connection signal="body_entered" from="Picker" to="." method="_on_picker_body_entered"]

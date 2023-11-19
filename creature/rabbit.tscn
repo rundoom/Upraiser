@@ -1,9 +1,20 @@
-[gd_scene load_steps=15 format=3 uid="uid://8jif2hfscjrg"]
+[gd_scene load_steps=17 format=3 uid="uid://8jif2hfscjrg"]
 
 [ext_resource type="PackedScene" uid="uid://cqwsdxnbwchf4" path="res://creature/npc/npc.tscn" id="1_kuli1"]
 [ext_resource type="Texture2D" uid="uid://bkfh7c6es6kqu" path="res://creature/npc/заяц(почти готов).png" id="2_mywt6"]
 [ext_resource type="Script" path="res://creature/rabbit.gd" id="2_uebtf"]
 [ext_resource type="Texture2D" uid="uid://xkmthc0r841w" path="res://creature/npc/14.png" id="3_kvnr4"]
+[ext_resource type="Shader" path="res://creature/npc/under_cursor.gdshader" id="4_el41s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ap1j"]
+resource_local_to_scene = true
+shader = ExtResource("4_el41s")
+shader_parameter/rainbow = false
+shader_parameter/line_color = Color(0, 1, 0, 0.282353)
+shader_parameter/line_scale = 1.2
+shader_parameter/frequency = 0.5
+shader_parameter/light_offset = 0.5
+shader_parameter/alpha = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_llf6d"]
 atlas = ExtResource("2_mywt6")
@@ -107,8 +118,11 @@ scale = Vector2(0.0820313, 0.0369141)
 texture = ExtResource("3_kvnr4")
 
 [node name="AnimatedSprite2D" parent="Rotator" index="1"]
+material = SubResource("ShaderMaterial_0ap1j")
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_l6sil")
+frame = 0
+frame_progress = 0.0
 
 [node name="FoodParticles" parent="Rotator" index="2"]
 amount = 16

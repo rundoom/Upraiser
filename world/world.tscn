@@ -184,4 +184,5 @@ script = ExtResource("7_8nthv")
 
 [node name="MovePointer" type="Marker2D" parent="." groups=["move_pointer"]]
 
+[connection signal="obstacle_created" from="." to="." method="check_navigation"]
 [connection signal="ready" from="." to="." method="create_pathfinding_points"]

@@ -8,6 +8,12 @@ var cells_map := {}
 var materialized_scenes := {}
 var ground_cells : Array[Vector2i] = []
 
+var is_nav_ready := false
+signal nav_ready
+
+signal obstacle_created
+
+var obstacle_count := 0
 
 class TileType:
 	const EMPTY_CELL = Vector2i(-1, -1)
@@ -70,8 +76,10 @@ func create_obstacle(shape: Shape2D, transform: Transform2D) -> void:
 	collision.transform = transform
 	collision.collision_mask = 8
 	var collisions := space_state.collide_shape(collision, 64)
+	
 	for coll in collisions:
 		astar.set_point_disabled(cells_map[local_to_map(coll)])
+		obstacle_created.emit()
 
 
 func get_point_path(from: Vector2, to: Vector2) -> Array[Vector2]:
@@ -163,3 +171,8 @@ func _intersect_filter(visitor: Vector2i, from: Vector2i, exclude: CollisionObje
 	var ray = PhysicsRayQueryParameters2D.create(map_to_local(visitor), map_to_local(from), 1, excludes)
 	var intersect = space_state.intersect_ray(ray)
 	return true if intersect.is_empty() else false
+
+
+func check_navigation() -> void:
+	obstacle_count += 1
+	if obstacle_count >= get_used_cells(1).size(): nav_ready.emit()

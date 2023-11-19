@@ -2,15 +2,14 @@ extends StaticBody2D
 
 
 @onready var space_state := get_world_2d().direct_space_state
-@onready var renderer := RenderingServer
 @onready var world := get_tree().get_first_node_in_group("world") as WorldGame
 @export var FruitSc: PackedScene
 @onready var fruit_pointer: PathFollow2D = $FruitPlaces/PathFollow2D
 
 
 func toggle_obstacle() -> void:
-	await renderer.frame_post_draw
-	world.create_obstacle.bind($HitBox.shape, $HitBox.global_transform).call_deferred()
+	await RenderingServer.frame_post_draw
+	world.create_obstacle($HitBox.shape, $HitBox.global_transform)
 
 
 func spawn_fruit() -> void:
