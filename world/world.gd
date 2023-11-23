@@ -45,7 +45,7 @@ func filter_ground(it: Vector2i) -> bool:
 func create_pathfinding_points() -> void:
 	astar.clear()
 	var used_cell_positions = get_used_cells(0)
-#	"hello"
+	
 	for cell_position in used_cell_positions:
 #		var weight = get_cell_tile_data(0, cell_position).custom_data_0
 		var weight = 1
