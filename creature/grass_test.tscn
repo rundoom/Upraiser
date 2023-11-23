@@ -25,3 +25,12 @@ position = Vector2(503.205, 140.963)
 
 [node name="Marker2D" type="Marker2D" parent="." index="7"]
 position = Vector2(512.5, 352.5)
+
+[connection signal="ready" from="@StaticBody2D@19128" to="@StaticBody2D@19128" method="toggle_obstacle" flags=18]
+[connection signal="ready" from="@StaticBody2D@19130" to="@StaticBody2D@19130" method="toggle_obstacle" flags=18]
+[connection signal="ready" from="@StaticBody2D@19132" to="@StaticBody2D@19132" method="toggle_obstacle" flags=18]
+[connection signal="ready" from="@StaticBody2D@19134" to="@StaticBody2D@19134" method="toggle_obstacle" flags=18]
+[connection signal="ready" from="@StaticBody2D@19136" to="@StaticBody2D@19136" method="toggle_obstacle" flags=18]
+[connection signal="ready" from="@StaticBody2D@19138" to="@StaticBody2D@19138" method="toggle_obstacle" flags=18]
+[connection signal="ready" from="@StaticBody2D@19140" to="@StaticBody2D@19140" method="toggle_obstacle" flags=18]
+[connection signal="ready" from="@StaticBody2D@19142" to="@StaticBody2D@19142" method="toggle_obstacle" flags=18]
